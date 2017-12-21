@@ -25,7 +25,9 @@ class Permissions {
 
     //Update the permissions.yml file with all changes
     fun updateYaml() {
-        yamlWriter.write(userPermissionMap)
-        yamlWriter.close()
+        yamlWriter.run {
+            write(userPermissionMap)
+            close()
+        }
     }
 }
