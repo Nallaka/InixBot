@@ -50,7 +50,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-/src/resources/botConfig.properties
-/src/resources/botConfig.yml
-/src/resources/permissions.yml
 /InixBot-Kotlin.iml
+/classes/
+/target/
+/src/main/kotlin/META-INF/
+/src/main/kotlin/resources/botConfig.yml
+/src/main/kotlin/resources/permissions.yml

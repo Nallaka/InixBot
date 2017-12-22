@@ -9,7 +9,7 @@ import java.io.FileWriter
 
 class Permissions {
     //Filepath
-    private var filePath = "src/resources/permissions.yml"
+    private var filePath = System.getProperty("user.dir") + "src/resources/permissions.yml"
 
     //Create userPermissionMap
     private var userPermissionRegistry: HashMap<String, PermissionLevel> = hashMapOf()
@@ -37,8 +37,8 @@ class Permissions {
 
 
     //Update the permissions.yml file with all changes
-    fun updateYaml() {
-        yamlWriter.run {
+    private fun updateYaml() {
+        with(yamlWriter) {
             write(userPermissionRegistry)
             close()
         }
