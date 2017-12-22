@@ -2,6 +2,7 @@ package me.nallaka.inixbot.meta.permissionmeta
 
 import com.esotericsoftware.yamlbeans.YamlReader
 import com.esotericsoftware.yamlbeans.YamlWriter
+import net.dv8tion.jda.core.JDA
 import net.dv8tion.jda.core.entities.User
 import java.io.FileReader
 import java.io.FileWriter
@@ -11,14 +12,26 @@ class Permissions {
     private var filePath = "src/resources/permissions.yml"
 
     //Create userPermissionMap
-    private var userPermissionMap: Map<String, PermissionLevel> = mapOf()
+    private var userPermissionRegistry: HashMap<String, PermissionLevel> = hashMapOf()
 
     //Create YamlReader and YamlWriter
     private var yamlReader = YamlReader(FileReader(filePath))
     private var yamlWriter = YamlWriter(FileWriter(filePath))
 
-    //TODO: setGuildUsersDefaultPermissionLevels. Set default permission levels for all Guild Users.
-    //TODO: loadGuildUsersPermissionLevels. Load levels from config to working map
+    //setGuildUsersDefaultPermissions: Gets all users not present in the userPermissionRegistry and gives default permission
+    fun setGuildUsersDefaultPermissions(jda: JDA) {
+        val userList = jda.users
+        userList
+                .filterNot { userPermissionRegistry.containsKey(it.id) }
+                .forEach { userPermissionRegistry.put(it.id, PermissionLevel.DEFAULT) }
+        updateYaml()
+    }
+
+    //loadGuildUsersPermissions: Loads permissions levels from file to userPermissionRegistry
+    fun loadGuildUsersPermissions() {
+        updateYaml()
+        var yamlPermissionRegistry: HashMap<String, PermissionLevel> = hashMapOf(yamlReader.read() as Pair<String, PermissionLevel>)
+    }
     //TODO: setUserPermissionLevel. Set a user's permission level.
     //TODO: userHasPermissionLevel. Check if User has a permission level
 
@@ -26,7 +39,7 @@ class Permissions {
     //Update the permissions.yml file with all changes
     fun updateYaml() {
         yamlWriter.run {
-            write(userPermissionMap)
+            write(userPermissionRegistry)
             close()
         }
     }

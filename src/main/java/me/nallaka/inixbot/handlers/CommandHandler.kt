@@ -37,8 +37,7 @@ class CommandHandler : ListenerAdapter() {
     //Runs on MessageRecieved Event. Checks type of command and executes
     override fun onMessageReceived(event: MessageReceivedEvent) {
         if (event.message.content.startsWith(InixBot.DEFAULT_COMMAND_PREFIX) || event.message.content.startsWith(InixBot.USER_COMMAND_PREFIX)) {
-            var beheadedCommand: String
-            beheadedCommand = event.message.content.replaceFirst(InixBot.USER_COMMAND_PREFIX.toRegex(), "").toLowerCase()
+            var beheadedCommand: String = event.message.content.replaceFirst(InixBot.USER_COMMAND_PREFIX.toRegex(), "").toLowerCase()
             beheadedCommand = event.message.content.replaceFirst(InixBot.DEFAULT_COMMAND_PREFIX.toRegex(), "")
             val commandArgs = beheadedCommand.split("\\s".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
 
