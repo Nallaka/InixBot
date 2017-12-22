@@ -43,5 +43,5 @@ fun main(args : Array<String>) {
     //TODO: Initialize Permissions
     val permissions = Permissions()
     permissions.setGuildUsersDefaultPermissions(jda)
-    permissions.loadGuildUsersPermissions()
+
 }

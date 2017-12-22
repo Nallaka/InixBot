@@ -9,7 +9,7 @@ import java.io.FileWriter
 
 class Permissions {
     //Filepath
-    private var filePath = System.getProperty("user.dir") + "src/resources/permissions.yml"
+    private var filePath = System.getProperty("user.dir") + "/src/main/kotlin/resources/permissions.yml"
 
     //Create userPermissionMap
     private var userPermissionRegistry: HashMap<String, PermissionLevel> = hashMapOf()
@@ -22,7 +22,7 @@ class Permissions {
     fun setGuildUsersDefaultPermissions(jda: JDA) {
         val userList = jda.users
         userList
-                .filterNot { userPermissionRegistry.containsKey(it.id) }
+                .filter { !userPermissionRegistry.containsKey(it.id) && !it.isBot }
                 .forEach { userPermissionRegistry.put(it.id, PermissionLevel.DEFAULT) }
         updateYaml()
     }
