@@ -3,9 +3,10 @@ package me.nallaka.inixbot.meta.commandmeta
 import me.nallaka.inixbot.commands.`fun`.CoinFlipCommand
 
 class CommandRegistry {
-    //Initialize CommandRegistry
-    private var commandRegistry: MutableMap<String, Command> = mutableMapOf()
-
+    companion object {
+        //Initialize CommandRegistry
+        var commandRegistry: HashMap<String, Command> = hashMapOf()
+    }
     //Adds new command to registry with name "commandString" and Command "command"
     fun setCommand(commandString: String, command: Command) = commandRegistry.put(commandString, command)
 

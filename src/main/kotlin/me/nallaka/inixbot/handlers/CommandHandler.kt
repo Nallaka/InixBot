@@ -12,7 +12,7 @@ class CommandHandler : ListenerAdapter() {
     private var commandRegistry = CommandRegistry()
 
     //Create Permissions Instance
-    var permissions = Permissions()
+    private var permissions = Permissions()
 
     //Checks if command with key "commandArgs[0]" exists in CommandRegistry
     fun isCommand(event: MessageReceivedEvent, commandArgs: Array<String>) : Boolean =
@@ -30,7 +30,7 @@ class CommandHandler : ListenerAdapter() {
             print("iscommand")
             command?.runCommand(event, commandArgs)
             command?.executed(event, commandArgs)
-        } else if (isHelpCommand(event, commandArgs) && permissions.userHasCommandPermission(user, command)) {
+        } else if (isHelpCommand(event, commandArgs) && permissions.userHasCommandPermission(user, commandRegistry.getCommand(commandArgs[1]))) {
             println("ishelpcommand")
             commandRegistry.getCommand(commandArgs[1])?.runHelpCommand(event, commandArgs)
             command?.executed(event, commandArgs)
@@ -49,10 +49,6 @@ class CommandHandler : ListenerAdapter() {
                 print("$arg ")
             }
             println()
-            var command = commandRegistry.getCommand(commandArgs[0])
-            commandRegistry.getCommand(commandArgs[0])!!.runCommand(event, commandArgs)
-            var message = EmbedBuilder().addField("Test", "test", true)
-            event.textChannel.sendMessage(message.build()).queue()
         }
     }
 

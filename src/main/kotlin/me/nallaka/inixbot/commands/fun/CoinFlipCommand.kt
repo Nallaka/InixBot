@@ -4,7 +4,7 @@ import me.nallaka.inixbot.meta.commandmeta.Command
 import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent
 
-class CoinFlipCommand : Command(PermissionLevel.DEFAULT) {
+class CoinFlipCommand : Command(PermissionLevel.ADMIN) {
     override fun runCommand(event: MessageReceivedEvent, args: Array<String>) {
         val random = (Math.random() * 1000).toInt()
         val flip: String
