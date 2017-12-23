@@ -9,7 +9,7 @@ import java.awt.Color
 
 abstract class Command(val commandPermissionLevel: PermissionLevel) {
     var commandLogger = CommandLogger()
-    var embeddedMessageBuilder = EmbedBuilder().setColor(Color.CYAN).clearFields().setTitle(null).setDescription(null)
+    var embeddedMessageBuilder: EmbedBuilder = EmbedBuilder().setColor(Color.CYAN).clearFields().setTitle(null).setDescription(null)
     var messageHandler = MessageHandler()
     protected var userCommandPrefix = InixBot.USER_COMMAND_PREFIX
     protected var defaultCommandPrefix = InixBot.DEFAULT_COMMAND_PREFIX
@@ -19,4 +19,5 @@ abstract class Command(val commandPermissionLevel: PermissionLevel) {
     abstract fun runHelpCommand(event: MessageReceivedEvent, args: Array<String>)
 
     abstract fun executed(event: MessageReceivedEvent, args: Array<String>): Boolean
+
 }

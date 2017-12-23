@@ -1,5 +1,7 @@
 package me.nallaka.inixbot.meta.commandmeta
 
+import me.nallaka.inixbot.commands.`fun`.CoinFlipCommand
+
 class CommandRegistry {
     //Initialize CommandRegistry
     private var commandRegistry: MutableMap<String, Command> = mutableMapOf()
@@ -17,7 +19,8 @@ class CommandRegistry {
     fun getCommandRegistry() : MutableMap<String, Command> = commandRegistry
 
     //Sets commandRegistry with original Commands
-    fun setCommendRegistry() {
+    fun setCommandRegistry() {
+        commandRegistry.put("flipcoin", CoinFlipCommand())
 
     }
 

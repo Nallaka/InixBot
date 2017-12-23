@@ -2,6 +2,8 @@ package me.nallaka.inixbot.meta.permissionmeta
 
 import com.esotericsoftware.yamlbeans.YamlReader
 import com.esotericsoftware.yamlbeans.YamlWriter
+import com.sun.org.apache.xpath.internal.operations.Bool
+import me.nallaka.inixbot.meta.commandmeta.Command
 import net.dv8tion.jda.core.JDA
 import net.dv8tion.jda.core.entities.User
 import java.io.FileReader
@@ -16,7 +18,6 @@ class Permissions {
 
     //Create YamlReader and YamlWriter
     private var yamlReader = YamlReader(FileReader(filePath))
-    private var yamlWriter = YamlWriter(FileWriter(filePath))
 
     //setGuildUsersDefaultPermissions: Gets all users not present in the userPermissionRegistry and gives default permission
     fun setGuildUsersDefaultPermissions(jda: JDA) {
@@ -29,18 +30,59 @@ class Permissions {
 
     //loadGuildUsersPermissions: Loads permissions levels from file to userPermissionRegistry
     fun loadGuildUsersPermissions() {
+        val yamlPermissionRegistry: HashMap<String, String> = yamlReader.read() as HashMap<String, String>
+        var tempPermissionLevel: PermissionLevel = PermissionLevel.DEFAULT
+        for (entry: Map.Entry<String,String> in yamlPermissionRegistry) {
+            if (!userPermissionRegistry.containsKey(entry.key)) {
+                when (entry.value) {
+                    "DEFAULT" -> tempPermissionLevel = PermissionLevel.DEFAULT
+                    "LOW" -> tempPermissionLevel = PermissionLevel.LOW
+                    "MEDIUM" -> tempPermissionLevel = PermissionLevel.MEDIUM
+                    "HIGH" -> tempPermissionLevel = PermissionLevel.HIGH
+                    "ADMIN" -> tempPermissionLevel = PermissionLevel.ADMIN
+                    "OWNER" -> tempPermissionLevel = PermissionLevel.OWNER
+                }
+                userPermissionRegistry.put(entry.key, tempPermissionLevel)
+            }
+        }
         updateYaml()
-        var yamlPermissionRegistry: HashMap<String, PermissionLevel> = hashMapOf(yamlReader.read() as Pair<String, PermissionLevel>)
     }
-    //TODO: setUserPermissionLevel. Set a user's permission level.
-    //TODO: userHasPermissionLevel. Check if User has a permission level
 
+    //setUserPermissionLevel: Sets a particular user's permission level and updates yaml
+    fun setUserPermissionLevel(user: User, permissionLevel: PermissionLevel) {
+        if (userPermissionRegistry.containsKey(user.id)) {
+            userPermissionRegistry.remove(user.id)
+        }
+        userPermissionRegistry.put(user.id, permissionLevel)
+        updateYaml()
+    }
+
+    //userHasPermissionLevel: Returns is user has designated permissionLevel or higher
+    fun userHasPermissionLevel(user: User, permissionLevel: PermissionLevel) : Boolean =
+            userPermissionRegistry.containsKey(user.id) && userPermissionRegistry[user.id]?.ordinal!! >= permissionLevel.ordinal
+
+    //userHasCommandPermission: Returns if user has permission for a command
+    fun userHasCommandPermission(user: User, command: Command?) : Boolean =
+            userPermissionRegistry.get(user.id)?.ordinal!! >= command?.commandPermissionLevel?.ordinal!!
+
+    //printPermissions: Prints all Users and corresponding PermissionLevel
+    fun printPermissions() {
+        for (entry: Map.Entry<String, PermissionLevel> in userPermissionRegistry) {
+            println("User: ${entry.key}; Permission: ${entry.value}")
+        }
+    }
 
     //Update the permissions.yml file with all changes
     private fun updateYaml() {
-        with(yamlWriter) {
-            write(userPermissionRegistry)
-            close()
+        val yamlWriter = YamlWriter(FileWriter(filePath))
+        try {
+            with(yamlWriter) {
+                write(userPermissionRegistry)
+                close()
+            }
+        } catch (e: com.esotericsoftware.yamlbeans.emitter.EmitterException) {
+            e.printStackTrace()
         }
+        yamlWriter.clearAnchors()
     }
 }

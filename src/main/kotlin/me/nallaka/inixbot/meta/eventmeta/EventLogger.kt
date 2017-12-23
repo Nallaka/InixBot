@@ -1,5 +1,7 @@
 package me.nallaka.inixbot.meta.eventmeta
 
+import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
+import me.nallaka.inixbot.meta.permissionmeta.Permissions
 import net.dv8tion.jda.core.events.*
 import net.dv8tion.jda.core.events.guild.GuildBanEvent
 import net.dv8tion.jda.core.events.guild.GuildUnbanEvent
@@ -15,6 +17,9 @@ import java.util.*
 class EventLogger : ListenerAdapter() {
     //Date Class
     private var date = Date()
+
+    //Permission Registry
+    private val permissions = Permissions()
 
     /*
      * JDA Related Events
@@ -45,6 +50,10 @@ class EventLogger : ListenerAdapter() {
     override fun onGuildMemberJoin(event: GuildMemberJoinEvent?) {
         logEvent(event)
         //TODO: Add new user to permission registry
+        val user = event?.user
+        if (user != null) {
+            permissions.setUserPermissionLevel(user, PermissionLevel.DEFAULT)
+        }
     }
 
     //onGuildMemberLeave: When a user leaves the Guild, remove them from the permission registry

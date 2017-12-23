@@ -2,10 +2,13 @@ package me.nallaka.inixbot
 
 import com.esotericsoftware.yamlbeans.YamlReader
 import me.nallaka.inixbot.handlers.CommandHandler
+import me.nallaka.inixbot.meta.commandmeta.CommandRegistry
 import me.nallaka.inixbot.meta.eventmeta.EventLogger
+import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
 import me.nallaka.inixbot.meta.permissionmeta.Permissions
 import net.dv8tion.jda.core.AccountType
 import net.dv8tion.jda.core.JDABuilder
+import net.dv8tion.jda.core.entities.User
 import java.io.FileReader
 
 class InixBot {
@@ -15,8 +18,7 @@ class InixBot {
         val DEFAULT_COMMAND_PREFIX = "_"
 
         //Set User Command Prefix
-        var USER_COMMAND_PREFIX = "_"
-
+        var USER_COMMAND_PREFIX = "."
     }
 }
 
@@ -38,10 +40,13 @@ fun main(args : Array<String>) {
     //Adding EventLogger Listener
     jda.addEventListener(EventLogger())
 
-    //TODO: Initialize CommandRegistry
+    //Initialize the CommandRegistry
+    val commandRegistry = CommandRegistry()
+    commandRegistry.setCommandRegistry()
 
-    //TODO: Initialize Permissions
+    //Initializing all permissions
     val permissions = Permissions()
+    permissions.loadGuildUsersPermissions()
     permissions.setGuildUsersDefaultPermissions(jda)
-
+    permissions.printPermissions()
 }
