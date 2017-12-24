@@ -16,7 +16,7 @@ class CommandHandler : ListenerAdapter() {
 
     //Checks if command with key "commandArgs[0]" exists in CommandRegistry
     fun isCommand(event: MessageReceivedEvent, commandArgs: Array<String>) : Boolean =
-            event.author.jda.selfUser != event.author && commandRegistry.registryContainsKey(commandArgs[0])
+            event.author.jda.selfUser != event.author && commandRegistry.registryContainsKey(commandArgs[0]) && commandArgs[0] != "help"
 
     //Checks if command with key "commandArgs[0]" is a "help" Command
     fun isHelpCommand(event: MessageReceivedEvent, commandArgs: Array<String>) : Boolean =
@@ -27,11 +27,9 @@ class CommandHandler : ListenerAdapter() {
         val user = event.author
         val command = commandRegistry.getCommand(commandArgs[0])
         if (isCommand(event, commandArgs) || isHelpCommand(event, commandArgs) && commandArgs.size == 1 && permissions.userHasCommandPermission(user, command)) {
-            print("iscommand")
             command?.runCommand(event, commandArgs)
             command?.executed(event, commandArgs)
-        } else if (isHelpCommand(event, commandArgs) && permissions.userHasCommandPermission(user, commandRegistry.getCommand(commandArgs[1]))) {
-            println("ishelpcommand")
+        } else if (isHelpCommand(event, commandArgs)) {
             commandRegistry.getCommand(commandArgs[1])?.runHelpCommand(event, commandArgs)
             command?.executed(event, commandArgs)
         }
@@ -40,7 +38,7 @@ class CommandHandler : ListenerAdapter() {
     //Runs on MessageRecieved Event. Checks type of command and executes
     override fun onMessageReceived(event: MessageReceivedEvent) {
         if (event.message.content.startsWith(InixBot.DEFAULT_COMMAND_PREFIX) || event.message.content.startsWith(InixBot.USER_COMMAND_PREFIX)) {
-            val beheadedCommand = event.message.content.removeRange(0, 1)
+            val beheadedCommand = event.message.content.removeRange(0, 1).toLowerCase()
             val commandArgs = beheadedCommand.split("\\s".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
             executeCommand(event, commandArgs)
             //Testing:

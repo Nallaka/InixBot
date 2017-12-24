@@ -1,6 +1,15 @@
 package me.nallaka.inixbot.meta.commandmeta
 
 import me.nallaka.inixbot.commands.`fun`.CoinFlipCommand
+import me.nallaka.inixbot.commands.`fun`.EightBallCommand
+import me.nallaka.inixbot.commands.`fun`.HelloCommand
+import me.nallaka.inixbot.commands.`fun`.RollDiceCommand
+import me.nallaka.inixbot.commands.admin.ChangePrefixCommand
+import me.nallaka.inixbot.commands.util.ExecuteCommand
+import me.nallaka.inixbot.commands.util.HelpCommand
+import me.nallaka.inixbot.commands.util.PingCommand
+import me.nallaka.inixbot.commands.util.SearchCommand
+import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
 
 class CommandRegistry {
     companion object {
@@ -21,8 +30,20 @@ class CommandRegistry {
 
     //Sets commandRegistry with original Commands
     fun setCommandRegistry() {
-        commandRegistry.put("flipcoin", CoinFlipCommand())
-
+        //Admin Commands
+        commandRegistry.put("changeprefix", ChangePrefixCommand())
+        //Moderation Commands
+        //Music Commands
+        //Fun Commands
+        commandRegistry.put("coinflip", CoinFlipCommand(PermissionLevel.ADMIN))
+        commandRegistry.put("8ball", EightBallCommand())
+        commandRegistry.put("hello", HelloCommand())
+        commandRegistry.put("rolldice", RollDiceCommand())
+        //Util Commands
+        commandRegistry.put("help", HelpCommand())
+        commandRegistry.put("ping", PingCommand())
+        commandRegistry.put("search", SearchCommand())
+        commandRegistry.put("execute", ExecuteCommand())
     }
 
 }

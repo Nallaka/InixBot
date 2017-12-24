@@ -10,7 +10,7 @@ class HelpCommand : Command(PermissionLevel.DEFAULT) {
                 .setDescription("Do ``_help <command>`` for more information")
         embeddedMessageBuilder.addField("Fun Commands :boom:", "``8ball``, ``hello``,", true)
         embeddedMessageBuilder.addField("Music Commands :musical_note:", "``music``, ", true)
-        embeddedMessageBuilder.addField("Utility Commands :tools:", "``changeheader``, ``coin``, ``ping``, ``rolldice``", true)
+        embeddedMessageBuilder.addField("Utility Commands :tools:", "``changeprefix``, ``coinflip``, ``ping``, ``rolldice``", true)
         messageHandler.sendMessage(event, embeddedMessageBuilder)
     }
 

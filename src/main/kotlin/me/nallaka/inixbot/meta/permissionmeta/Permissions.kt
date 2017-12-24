@@ -10,14 +10,16 @@ import java.io.FileReader
 import java.io.FileWriter
 
 class Permissions {
-    //Filepath
-    private var filePath = System.getProperty("user.dir") + "/src/main/kotlin/resources/permissions.yml"
+    companion object {
+        //Filepath
+        private var filePath = System.getProperty("user.dir") + "/src/main/kotlin/resources/permissions.yml"
 
-    //Create userPermissionMap
-    private var userPermissionRegistry: HashMap<String, PermissionLevel> = hashMapOf()
+        //Create userPermissionMap
+        var userPermissionRegistry: HashMap<String, PermissionLevel> = hashMapOf()
 
-    //Create YamlReader and YamlWriter
-    private var yamlReader = YamlReader(FileReader(filePath))
+        //Create YamlReader and YamlWriter
+        private var yamlReader = YamlReader(FileReader(filePath))
+    }
 
     //setGuildUsersDefaultPermissions: Gets all users not present in the userPermissionRegistry and gives default permission
     fun setGuildUsersDefaultPermissions(jda: JDA) {
