@@ -57,3 +57,7 @@ fabric.properties
 /src/main/kotlin/resources/botConfig.yml
 /src/main/kotlin/resources/permissions.yml
 /src/main/kotlin/resources/log.txt
+/InixBot.iml
+/src/test/kotlin/resources/botConfig.yml
+/src/test/kotlin/resources/permissions.yml
+/src/test/kotlin/META-INF/MANIFEST.MF

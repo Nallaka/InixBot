@@ -4,7 +4,7 @@ import me.nallaka.inixbot.InixBot
 import net.dv8tion.jda.core.EmbedBuilder
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent
 
-class MessageHandler {
+class CommandMessageHandler {
 
     //Sends Embedded Message
     fun sendMessage(event: MessageReceivedEvent, embedBuilder: EmbedBuilder) {
