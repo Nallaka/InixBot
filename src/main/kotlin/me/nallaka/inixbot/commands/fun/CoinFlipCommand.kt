@@ -1,8 +1,8 @@
 package me.nallaka.inixbot.commands.`fun`
 
 import me.nallaka.inixbot.handlers.CommandHandler
-import me.nallaka.inixbot.meta.commandmeta.Command
-import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
+import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 
 class CoinFlipCommand(commandPermissionLevel: PermissionLevel) : Command(commandPermissionLevel) {
 

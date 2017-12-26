@@ -1,8 +1,8 @@
-package me.nallaka.inixbot.handlers
+package me.nallaka.inixbot.listeners
 
-import me.nallaka.inixbot.meta.eventmeta.EventLogger
-import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
-import me.nallaka.inixbot.meta.permissionmeta.Permissions
+import me.nallaka.inixbot.utils.eventmeta.EventLogger
+import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
+import me.nallaka.inixbot.utils.permissionmeta.Permissions
 import net.dv8tion.jda.core.events.DisconnectEvent
 import net.dv8tion.jda.core.events.ReadyEvent
 import net.dv8tion.jda.core.events.ReconnectedEvent
@@ -16,7 +16,7 @@ import net.dv8tion.jda.core.events.guild.voice.GuildVoiceLeaveEvent
 import net.dv8tion.jda.core.events.guild.voice.GuildVoiceMoveEvent
 import net.dv8tion.jda.core.hooks.ListenerAdapter
 
-class EventHandler : ListenerAdapter() {
+class EventListener : ListenerAdapter() {
     private var permissions = Permissions()
 
     /*

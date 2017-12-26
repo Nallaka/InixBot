@@ -1,4 +1,4 @@
-package me.nallaka.inixbot.meta.permissionmeta
+package me.nallaka.inixbot.utils.permissionmeta
 
 enum class PermissionLevel {
     //PermissionLevels in order ot precedence

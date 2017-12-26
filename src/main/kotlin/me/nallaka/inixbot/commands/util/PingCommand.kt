@@ -1,8 +1,8 @@
 package me.nallaka.inixbot.commands.util
 
 import me.nallaka.inixbot.handlers.CommandHandler
-import me.nallaka.inixbot.meta.commandmeta.Command
-import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
+import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 import net.dv8tion.jda.core.entities.MessageEmbed
 
 class PingCommand  : Command(PermissionLevel.DEFAULT) {

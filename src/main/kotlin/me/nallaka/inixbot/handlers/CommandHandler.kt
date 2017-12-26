@@ -1,9 +1,9 @@
 package me.nallaka.inixbot.handlers
 
 import me.nallaka.inixbot.InixBot
-import me.nallaka.inixbot.meta.commandmeta.Command
-import me.nallaka.inixbot.meta.commandmeta.CommandRegistry
-import me.nallaka.inixbot.meta.permissionmeta.Permissions
+import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.CommandRegistry
+import me.nallaka.inixbot.utils.permissionmeta.Permissions
 import net.dv8tion.jda.core.entities.Message
 import net.dv8tion.jda.core.entities.User
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent

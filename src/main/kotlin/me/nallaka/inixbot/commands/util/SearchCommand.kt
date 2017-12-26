@@ -1,8 +1,8 @@
 package me.nallaka.inixbot.commands.util
 
 import me.nallaka.inixbot.handlers.CommandHandler
-import me.nallaka.inixbot.meta.commandmeta.Command
-import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
+import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
 import java.io.IOException
@@ -12,8 +12,8 @@ import java.net.URLEncoder
 
 class SearchCommand : Command(PermissionLevel.DEFAULT) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        embeddedMessageBuilder.setTitle("Search Results :mag_right:")
         if (args.isNotEmpty()) {
+            embeddedMessageBuilder.setTitle("Search Results :mag_right:")
             var searchRequest = ""
             for (arg in args) {
                 searchRequest += arg + " "

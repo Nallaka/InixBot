@@ -1,4 +1,4 @@
-package me.nallaka.inixbot.meta.commandmeta
+package me.nallaka.inixbot.utils.commandmeta
 
 import me.nallaka.inixbot.commands.`fun`.CoinFlipCommand
 import me.nallaka.inixbot.commands.`fun`.EightBallCommand
@@ -9,7 +9,7 @@ import me.nallaka.inixbot.commands.util.ExecuteCommand
 import me.nallaka.inixbot.commands.util.HelpCommand
 import me.nallaka.inixbot.commands.util.PingCommand
 import me.nallaka.inixbot.commands.util.SearchCommand
-import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
+import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 
 class CommandRegistry {
     companion object {

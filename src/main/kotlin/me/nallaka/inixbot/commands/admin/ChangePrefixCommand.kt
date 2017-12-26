@@ -2,8 +2,8 @@ package me.nallaka.inixbot.commands.admin
 
 import me.nallaka.inixbot.InixBot
 import me.nallaka.inixbot.handlers.CommandHandler
-import me.nallaka.inixbot.meta.commandmeta.Command
-import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
+import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 
 class ChangePrefixCommand : Command(PermissionLevel.ADMIN) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {

@@ -1,8 +1,9 @@
-package me.nallaka.inixbot.meta.commandmeta
+package me.nallaka.inixbot.utils.commandmeta
 
 import me.nallaka.inixbot.InixBot
 import me.nallaka.inixbot.handlers.CommandHandler
-import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
+import me.nallaka.inixbot.handlers.CommandMessageHandler
+import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 import net.dv8tion.jda.core.EmbedBuilder
 import java.awt.Color
 

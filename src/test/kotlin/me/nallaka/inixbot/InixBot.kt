@@ -2,7 +2,7 @@ package me.nallaka.inixbot
 
 import com.esotericsoftware.yamlbeans.YamlReader
 import me.nallaka.inixbot.handlers.CommandHandler
-import me.nallaka.inixbot.meta.eventmeta.EventLogger
+import me.nallaka.inixbot.utils.eventmeta.EventLogger
 import net.dv8tion.jda.core.AccountType
 import net.dv8tion.jda.core.JDABuilder
 import java.io.FileReader

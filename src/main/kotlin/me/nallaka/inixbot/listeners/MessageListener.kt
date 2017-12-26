@@ -1,10 +1,11 @@
-package me.nallaka.inixbot.handlers
+package me.nallaka.inixbot.listeners
 
 import me.nallaka.inixbot.InixBot
+import me.nallaka.inixbot.handlers.CommandHandler
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent
 import net.dv8tion.jda.core.hooks.ListenerAdapter
 
-class MessageHandler : ListenerAdapter() {
+class MessageListener : ListenerAdapter() {
     private var commandHandler = CommandHandler()
 
     //Runs on MessageRecieved Event. Checks type of command and executes

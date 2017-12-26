@@ -3,8 +3,8 @@ package me.nallaka.inixbot.commands.util
 import bsh.Interpreter
 import bsh.InterpreterError
 import me.nallaka.inixbot.handlers.CommandHandler
-import me.nallaka.inixbot.meta.commandmeta.Command
-import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
+import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 
 class ExecuteCommand : Command(PermissionLevel.DEFAULT) {
     private var interpreter: Interpreter = Interpreter()

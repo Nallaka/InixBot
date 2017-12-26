@@ -1,4 +1,4 @@
-package me.nallaka.inixbot.meta.commandmeta
+package me.nallaka.inixbot.utils.commandmeta
 
 import me.nallaka.inixbot.handlers.CommandHandler
 import java.sql.Timestamp

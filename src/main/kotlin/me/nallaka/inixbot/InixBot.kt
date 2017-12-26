@@ -1,10 +1,10 @@
 package me.nallaka.inixbot
 
 import com.esotericsoftware.yamlbeans.YamlReader
-import me.nallaka.inixbot.handlers.EventHandler
-import me.nallaka.inixbot.handlers.MessageHandler
-import me.nallaka.inixbot.meta.commandmeta.CommandRegistry
-import me.nallaka.inixbot.meta.permissionmeta.Permissions
+import me.nallaka.inixbot.listeners.EventListener
+import me.nallaka.inixbot.listeners.MessageListener
+import me.nallaka.inixbot.utils.commandmeta.CommandRegistry
+import me.nallaka.inixbot.utils.permissionmeta.Permissions
 import net.dv8tion.jda.core.AccountType
 import net.dv8tion.jda.core.JDABuilder
 import java.io.FileReader
@@ -33,11 +33,11 @@ fun main(args : Array<String>) {
     //Create JDA Bot
     val jda = JDABuilder(AccountType.BOT).setToken(botToken).buildBlocking()
 
-    //Adding MessageHandler Listener
-    jda.addEventListener(MessageHandler())
+    //Adding MessageListener Listener
+    jda.addEventListener(MessageListener())
 
     //Adding EventLogger Listener
-    jda.addEventListener(EventHandler())
+    jda.addEventListener(EventListener())
 
     //Initialize the CommandRegistry
     val commandRegistry = CommandRegistry()

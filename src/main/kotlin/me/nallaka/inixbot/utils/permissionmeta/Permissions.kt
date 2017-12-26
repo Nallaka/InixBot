@@ -1,8 +1,8 @@
-package me.nallaka.inixbot.meta.permissionmeta
+package me.nallaka.inixbot.utils.permissionmeta
 
 import com.esotericsoftware.yamlbeans.YamlReader
 import com.esotericsoftware.yamlbeans.YamlWriter
-import me.nallaka.inixbot.meta.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.Command
 import net.dv8tion.jda.core.JDA
 import net.dv8tion.jda.core.entities.User
 import java.io.FileReader
