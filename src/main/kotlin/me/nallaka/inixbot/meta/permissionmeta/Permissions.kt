@@ -2,7 +2,6 @@ package me.nallaka.inixbot.meta.permissionmeta
 
 import com.esotericsoftware.yamlbeans.YamlReader
 import com.esotericsoftware.yamlbeans.YamlWriter
-import com.sun.org.apache.xpath.internal.operations.Bool
 import me.nallaka.inixbot.meta.commandmeta.Command
 import net.dv8tion.jda.core.JDA
 import net.dv8tion.jda.core.entities.User
@@ -69,11 +68,11 @@ class Permissions {
 
     //userHasPermissionLevel: Returns is user has designated permissionLevel or higher
     fun userHasPermissionLevel(user: User, permissionLevel: PermissionLevel) : Boolean =
-            userPermissionRegistry.containsKey(user.id) && userPermissionRegistry[user.id]?.ordinal!! >= permissionLevel.ordinal
+            userPermissionRegistry.containsKey(user.id) && userPermissionRegistry[user.id]?.getPermissionLevelOrdinal()!! >= permissionLevel.getPermissionLevelOrdinal()
 
     //userHasCommandPermission: Returns if user has permission for a command
     fun userHasCommandPermission(user: User, command: Command?) : Boolean =
-            userPermissionRegistry.get(user.id)?.ordinal!! >= command?.commandPermissionLevel?.ordinal!!
+            userPermissionRegistry.get(user.id)?.ordinal!! >= command?.commandPermissionLevel!!.getPermissionLevelOrdinal()
 
     //printPermissions: Prints all Users and corresponding PermissionLevel
     fun printPermissions() {

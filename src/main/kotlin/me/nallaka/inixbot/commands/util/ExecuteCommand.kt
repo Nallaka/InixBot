@@ -2,22 +2,22 @@ package me.nallaka.inixbot.commands.util
 
 import bsh.Interpreter
 import bsh.InterpreterError
+import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.meta.commandmeta.Command
 import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent
 
 class ExecuteCommand : Command(PermissionLevel.DEFAULT) {
     private var interpreter: Interpreter = Interpreter()
 
-    override fun runCommand(event: MessageReceivedEvent, args: Array<String>) {
-        if (event.author.id == "131068934907494400") {
-            interpreter.set("event", event)
+    override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
+        if (commandContainer.author.id == "131068934907494400") {
+            interpreter.set("event", commandContainer.event)
             interpreter.set("args", args)
 
             if (args.size > 1) {
                 embeddedMessageBuilder.setTitle("Execute :computer:")
                 try {
-                    interpreter.eval("value = ${event.message.content.substring(8)}")
+                    interpreter.eval("value = ${commandContainer.content.substring(8)}")
                     embeddedMessageBuilder.addField("Returned", "${interpreter.get("value")}", true)
                 } catch (e: InterpreterError) {
                     embeddedMessageBuilder.addField("ERROR :no_entry:", "Can Not Evaluate", true)
@@ -28,15 +28,15 @@ class ExecuteCommand : Command(PermissionLevel.DEFAULT) {
         } else {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Execute is only usable by <@131068934907494400>", true)
         }
-        messageHandler.sendMessage(event, embeddedMessageBuilder)
+        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
 
     }
 
-    override fun runHelpCommand(event: MessageReceivedEvent, args: Array<String>) {
+    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
     }
 
-    override fun executed(event: MessageReceivedEvent, args: Array<String>): Boolean {
-        commandLogger.logCommand(event, args)
+    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
+        commandLogger.logCommand(commandContainer)
         return true
     }
 }

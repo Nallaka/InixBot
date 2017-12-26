@@ -1,23 +1,32 @@
 package me.nallaka.inixbot.meta.commandmeta
 
 import me.nallaka.inixbot.InixBot
+import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.handlers.CommandMessageHandler
 import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
 import net.dv8tion.jda.core.EmbedBuilder
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent
 import java.awt.Color
 
 abstract class Command(val commandPermissionLevel: PermissionLevel) {
+    //Command Logger
     var commandLogger = CommandLogger()
+
+    //Message Builder
     var embeddedMessageBuilder: EmbedBuilder = EmbedBuilder().setColor(Color.CYAN).clearFields().setTitle(null).setDescription(null)
-    var messageWriter = CommandMessageHandler()
+
+    //Command Message Handler
+    var commandMessageHandler = CommandMessageHandler()
+
+    //User Defined Prefix
     protected var userCommandPrefix = InixBot.USER_COMMAND_PREFIX
+
+    //Default Prefix
     protected var defaultCommandPrefix = InixBot.DEFAULT_COMMAND_PREFIX
 
-    abstract fun runCommand(event: MessageReceivedEvent, args: Array<String>)
+    abstract fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer)
 
-    abstract fun runHelpCommand(event: MessageReceivedEvent, args: Array<String>)
+    abstract fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer)
 
-    abstract fun executed(event: MessageReceivedEvent, args: Array<String>): Boolean
+    abstract fun executed(commandContainer: CommandHandler.CommandContainer): Boolean
 
 }

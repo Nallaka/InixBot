@@ -1,11 +1,11 @@
 package me.nallaka.inixbot.commands.`fun`
 
+import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.meta.commandmeta.Command
 import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent
 
 class EightBallCommand : Command(PermissionLevel.DEFAULT) {
-    override fun runCommand(event: MessageReceivedEvent, args: Array<String>) {
+    override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         var eightBallResponse = ""
         if (args.size > 1) {
             when ((Math.random() * 20 + 1).toInt()) {
@@ -34,15 +34,15 @@ class EightBallCommand : Command(PermissionLevel.DEFAULT) {
             eightBallResponse = "I'll need a question"
         }
         embeddedMessageBuilder.addField(":8ball: says", eightBallResponse, true)
-        messageHandler.sendMessage(event, embeddedMessageBuilder)
+        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
 
-    override fun runHelpCommand(event: MessageReceivedEvent, args: Array<String>) {
-        messageHandler.sendHelpMessage(event, embeddedMessageBuilder, "8 Ball :8ball:", "You Ask, It Answers", "8ball")
+    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
+        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "8 Ball :8ball:", "You Ask, It Answers", "8ball")
     }
 
-    override fun executed(event: MessageReceivedEvent, args: Array<String>): Boolean {
-        commandLogger.logCommand(event, args)
+    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
+        commandLogger.logCommand(commandContainer)
         return false
     }
 }

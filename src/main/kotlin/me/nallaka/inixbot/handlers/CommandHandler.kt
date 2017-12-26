@@ -17,11 +17,12 @@ class CommandHandler : ListenerAdapter() {
     private var permissions = Permissions()
 
     //Create the commandContainer data class
-    data class CommandContainer(val event: MessageReceivedEvent, val rawMessage: Message, val author: User, val beheadedCommand: String, val splitBeheadedCommand: Array<String>, val invoke: String, val command: Command?, val args: Array<String>)
+    data class CommandContainer(val event: MessageReceivedEvent, val rawMessage: Message, val content: String, val author: User, val beheadedCommand: String, val splitBeheadedCommand: Array<String>, val invoke: String, val command: Command?, val args: Array<String>)
 
     //Parses a given command
     fun parseCommand(event: MessageReceivedEvent) : CommandContainer {
         val rawMessage = event.message
+        val content = rawMessage.content
         val author = event.author
         val beheadedCommand = event.message.content.removeRange(0, 1).toLowerCase()
         val splitBeheadedCommand = beheadedCommand.split("\\s".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
@@ -31,7 +32,7 @@ class CommandHandler : ListenerAdapter() {
         splitBeheadedCommand.filterTo(argsList) { it != splitBeheadedCommand[0] }
         val args: Array<String> = arrayOf()
         argsList.toArray(args)
-        return CommandContainer(event, rawMessage, author, beheadedCommand, splitBeheadedCommand, invoke, command, args)
+        return CommandContainer(event, rawMessage, content, author, beheadedCommand, splitBeheadedCommand, invoke, command, args)
     }
 
     //Checks if command with key invoke exists in CommandRegistry
@@ -50,11 +51,11 @@ class CommandHandler : ListenerAdapter() {
         val invoke = commandContainer.invoke
         val command = commandContainer.command
         if (isCommand(event, invoke) || isHelpCommand(event, invoke) && commandContainer.splitBeheadedCommand.isNotEmpty() && permissions.userHasCommandPermission(user, command)) {
-            command?.runCommand(event, args)
-            command?.executed(event, args)
+            command?.runCommand(args, commandContainer)
+            command?.executed(commandContainer)
         } else if (isHelpCommand(event, invoke)) {
-            commandRegistry.getCommand(invoke)?.runHelpCommand(event, args)
-            command?.executed(event, args)
+            commandRegistry.getCommand(invoke)?.runHelpCommand(args, commandContainer)
+            command?.executed(commandContainer)
         }
     }
 }

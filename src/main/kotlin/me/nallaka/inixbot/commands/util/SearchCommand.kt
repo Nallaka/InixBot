@@ -1,8 +1,8 @@
 package me.nallaka.inixbot.commands.util
 
+import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.meta.commandmeta.Command
 import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
 import java.io.IOException
@@ -11,7 +11,7 @@ import java.net.URLDecoder
 import java.net.URLEncoder
 
 class SearchCommand : Command(PermissionLevel.DEFAULT) {
-    override fun runCommand(event: MessageReceivedEvent, args: Array<String>) {
+    override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         embeddedMessageBuilder.setTitle("Search Results :mag_right:")
         if (args.size > 1) {
             var searchRequest = ""
@@ -49,15 +49,15 @@ class SearchCommand : Command(PermissionLevel.DEFAULT) {
         } else {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Input a Search", false)
         }
-        messageHandler.sendMessage(event, embeddedMessageBuilder)
+        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
 
-    override fun runHelpCommand(event: MessageReceivedEvent, args: Array<String>) {
-        messageHandler.sendHelpMessage(event, embeddedMessageBuilder, "Google Search :mag_right:", "Search Google", "google <search>")
+    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
+        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "Google Search :mag_right:", "Search Google", "google <search>")
     }
 
-    override fun executed(event: MessageReceivedEvent, args: Array<String>): Boolean {
-        commandLogger.logCommand(event, args)
+    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
+        commandLogger.logCommand(commandContainer)
         return false
     }
 }
