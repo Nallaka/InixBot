@@ -13,12 +13,11 @@ import java.net.URLEncoder
 class SearchCommand : Command(PermissionLevel.DEFAULT) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         embeddedMessageBuilder.setTitle("Search Results :mag_right:")
-        if (args.size > 1) {
+        if (args.isNotEmpty()) {
             var searchRequest = ""
-            args
-                    .filterNot { it.equals("google", ignoreCase = true) }
-                    .forEach { searchRequest = it + " " }
-
+            for (arg in args) {
+                searchRequest += arg + " "
+            }
             var links: Elements? = null
             try {
                 val googleURL = "http://www.google.com/search?q="

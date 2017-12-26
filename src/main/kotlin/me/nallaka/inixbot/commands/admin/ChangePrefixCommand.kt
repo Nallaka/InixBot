@@ -9,8 +9,9 @@ class ChangePrefixCommand : Command(PermissionLevel.ADMIN) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         if (args.isNotEmpty()) {
             InixBot.USER_COMMAND_PREFIX = args[0]
+            println(InixBot.USER_COMMAND_PREFIX)
             embeddedMessageBuilder.addField("Command Header -", "Changed to ``" + args[0] + "``", true)
-        } else if (args.size == 1) {
+        } else if (!args.isNotEmpty()) {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Input a New Header", true)
         }
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)

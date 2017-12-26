@@ -14,7 +14,7 @@ class ExecuteCommand : Command(PermissionLevel.DEFAULT) {
             interpreter.set("event", commandContainer.event)
             interpreter.set("args", args)
 
-            if (args.size > 1) {
+            if (args.isNotEmpty()) {
                 embeddedMessageBuilder.setTitle("Execute :computer:")
                 try {
                     interpreter.eval("value = ${commandContainer.content.substring(8)}")

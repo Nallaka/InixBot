@@ -9,8 +9,8 @@ class CommandLogger {
     //Prints out called command with arguments
     fun logCommand(commandContainer: CommandHandler.CommandContainer) {
         var stringToLog = ("[${Timestamp(date.time)}] [Command] ${commandContainer.invoke} [Author] ${commandContainer.author.id} [Args] ")
-        for (arg in commandContainer.args) {
-            stringToLog += arg + " "
+        for (commandArg in commandContainer.args) {
+            stringToLog += commandArg + " "
         }
         println(stringToLog)
     }

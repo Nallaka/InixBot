@@ -7,7 +7,7 @@ import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
 class EightBallCommand : Command(PermissionLevel.DEFAULT) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         var eightBallResponse = ""
-        if (args.size > 1) {
+        if (args.isNotEmpty()) {
             when ((Math.random() * 20 + 1).toInt()) {
                 1 -> eightBallResponse = "It is certain"
                 2 -> eightBallResponse = "It is decidedly so"

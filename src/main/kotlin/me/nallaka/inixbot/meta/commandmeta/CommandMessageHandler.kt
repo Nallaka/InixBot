@@ -1,4 +1,4 @@
-package me.nallaka.inixbot.handlers
+package me.nallaka.inixbot.meta.commandmeta
 
 import me.nallaka.inixbot.InixBot
 import net.dv8tion.jda.core.EmbedBuilder

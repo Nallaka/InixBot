@@ -7,9 +7,9 @@ import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
 class RollDiceCommand : Command(PermissionLevel.DEFAULT) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         try {
-            val diceArg = Integer.parseInt(args[1])
+            val diceArg = Integer.parseInt(args[0])
             if (diceArg < 1000) {
-                embeddedMessageBuilder.addField("You Rolled :game_die:", Integer.toString((Math.random() * Integer.parseInt(args[1])).toInt()), true)
+                embeddedMessageBuilder.addField("You Rolled :game_die:", Integer.toString((Math.random() * Integer.parseInt(args[0])).toInt()), true)
             } else {
                 embeddedMessageBuilder.addField("ERROR :game_die:", "Dice value too high. Please try again", true)
             }

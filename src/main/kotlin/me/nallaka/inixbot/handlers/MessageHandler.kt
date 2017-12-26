@@ -9,7 +9,8 @@ class MessageHandler : ListenerAdapter() {
 
     //Runs on MessageRecieved Event. Checks type of command and executes
     override fun onMessageReceived(event: MessageReceivedEvent) {
-        if (event.message.content.startsWith(InixBot.DEFAULT_COMMAND_PREFIX) || event.message.content.startsWith(InixBot.USER_COMMAND_PREFIX)) {
+        val content = event.message.content.toLowerCase()
+        if (content.startsWith(InixBot.DEFAULT_COMMAND_PREFIX) || content.toLowerCase().startsWith(InixBot.USER_COMMAND_PREFIX)) {
             commandHandler.executeCommand(commandHandler.parseCommand(event))
         }
     }

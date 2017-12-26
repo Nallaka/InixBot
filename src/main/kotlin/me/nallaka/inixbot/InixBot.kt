@@ -1,17 +1,14 @@
 package me.nallaka.inixbot
 
 import com.esotericsoftware.yamlbeans.YamlReader
-import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.handlers.EventHandler
 import me.nallaka.inixbot.handlers.MessageHandler
 import me.nallaka.inixbot.meta.commandmeta.CommandRegistry
-import me.nallaka.inixbot.meta.eventmeta.EventLogger
-import me.nallaka.inixbot.meta.permissionmeta.PermissionLevel
 import me.nallaka.inixbot.meta.permissionmeta.Permissions
 import net.dv8tion.jda.core.AccountType
 import net.dv8tion.jda.core.JDABuilder
-import net.dv8tion.jda.core.entities.User
 import java.io.FileReader
+
 
 class InixBot {
 
