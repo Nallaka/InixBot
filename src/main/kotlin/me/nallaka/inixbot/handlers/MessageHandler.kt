@@ -1,26 +1,16 @@
 package me.nallaka.inixbot.handlers
 
 import me.nallaka.inixbot.InixBot
-import net.dv8tion.jda.core.EmbedBuilder
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent
+import net.dv8tion.jda.core.hooks.ListenerAdapter
 
-class MessageHandler {
+class MessageHandler : ListenerAdapter() {
+    private var commandHandler = CommandHandler()
 
-    //Sends Embedded Message
-    fun sendMessage(event: MessageReceivedEvent, embedBuilder: EmbedBuilder) {
-        event.textChannel.sendMessage(embedBuilder.build()).queue()
-        clearEmbeddedBuilder(embedBuilder)
+    //Runs on MessageRecieved Event. Checks type of command and executes
+    override fun onMessageReceived(event: MessageReceivedEvent) {
+        if (event.message.content.startsWith(InixBot.DEFAULT_COMMAND_PREFIX) || event.message.content.startsWith(InixBot.USER_COMMAND_PREFIX)) {
+            commandHandler.executeCommand(commandHandler.parseCommand(event))
+        }
     }
-
-    //Sends Embedded Help Message
-    fun sendHelpMessage(event: MessageReceivedEvent, embedBuilder: EmbedBuilder, helpTitle: String, helpDescription: String, helpUsage: String) {
-        embedBuilder.setTitle(helpTitle)
-                .setDescription(helpDescription)
-                .addField("Usage", "``" + InixBot.USER_COMMAND_PREFIX + helpUsage + "``", true)
-        sendMessage(event, embedBuilder)
-        clearEmbeddedBuilder(embedBuilder)
-    }
-
-    //Clears the current EmbedMessage
-    fun clearEmbeddedBuilder(embedBuilder: EmbedBuilder) = embedBuilder.setTitle(null).setDescription(null).clearFields()
 }

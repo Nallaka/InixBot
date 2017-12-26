@@ -59,6 +59,14 @@ class Permissions {
         updateYaml()
     }
 
+    //removeUser: Removes a user from the registry
+    fun removeUser(user: User) {
+        if (userPermissionRegistry.containsKey(user.id)) {
+            userPermissionRegistry.remove(user.id)
+        }
+        updateYaml()
+    }
+
     //userHasPermissionLevel: Returns is user has designated permissionLevel or higher
     fun userHasPermissionLevel(user: User, permissionLevel: PermissionLevel) : Boolean =
             userPermissionRegistry.containsKey(user.id) && userPermissionRegistry[user.id]?.ordinal!! >= permissionLevel.ordinal
@@ -70,7 +78,7 @@ class Permissions {
     //printPermissions: Prints all Users and corresponding PermissionLevel
     fun printPermissions() {
         for (entry: Map.Entry<String, PermissionLevel> in userPermissionRegistry) {
-            println("User: ${entry.key}; Permission: ${entry.value}")
+            println("[User] ${entry.key} [Permission] ${entry.value}")
         }
     }
 
