@@ -41,12 +41,6 @@ class CommandHandler : ListenerAdapter() {
             val beheadedCommand = event.message.content.removeRange(0, 1).toLowerCase()
             val commandArgs = beheadedCommand.split("\\s".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
             executeCommand(event, commandArgs)
-            //Testing:
-            print("TESTING: ")
-            for (arg: String in commandArgs) {
-                print("$arg ")
-            }
-            println()
         }
     }
 
