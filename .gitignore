@@ -61,3 +61,4 @@ fabric.properties
 /src/test/kotlin/resources/botConfig.yml
 /src/test/kotlin/resources/permissions.yml
 /src/test/kotlin/META-INF/MANIFEST.MF
+/.idea/
