@@ -11,19 +11,19 @@ class RngCommand : Command(PermissionLevel.DEFAULT) {
             if (diceArg < 1000) {
                 embeddedMessageBuilder.addField("RNG :game_die:", Integer.toString((Math.random() * Integer.parseInt(args[0])).toInt()), true)
             } else {
-                embeddedMessageBuilder.addField("ERROR :game_die:", "Dice value too high. Please try again", true)
+                embeddedMessageBuilder.addField("ERROR :game_die:", "Value too high. Please try again", true)
             }
             commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
             commandMessageHandler.clearEmbeddedBuilder(embeddedMessageBuilder)
         } catch (e: ArrayIndexOutOfBoundsException) {
-            embeddedMessageBuilder.addField("ERROR :game_die:", "Input a dice value", true)
+            embeddedMessageBuilder.addField("ERROR :game_die:", "Input a RNG value", true)
             commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
         }
 
     }
 
     override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "Roll Dice :game_die:", "Rolls a Die", "rolldice <number>")
+        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "RNG :game_die:", "A Random Number Generator", "rng <number>")
     }
 
     override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {

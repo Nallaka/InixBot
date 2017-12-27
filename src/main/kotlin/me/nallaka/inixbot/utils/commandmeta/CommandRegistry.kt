@@ -40,7 +40,7 @@ class CommandRegistry {
         commandRegistry.put("coinflip", CoinFlipCommand(PermissionLevel.ADMIN))
         commandRegistry.put("8ball", EightBallCommand())
         commandRegistry.put("hello", HelloCommand())
-        commandRegistry.put("rolldice", RngCommand())
+        commandRegistry.put("rng", RngCommand())
         //Util Commands
         commandRegistry.put("help", HelpCommand())
         commandRegistry.put("ping", PingCommand())
