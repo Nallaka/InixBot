@@ -16,9 +16,4 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 class BotInfoCommand : Command(PermissionLevel.DEFAULT) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
     }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return true
-    }
 }

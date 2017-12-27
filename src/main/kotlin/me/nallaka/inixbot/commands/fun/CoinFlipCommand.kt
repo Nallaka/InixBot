@@ -27,9 +27,4 @@ class CoinFlipCommand : Command(PermissionLevel.DEFAULT) {
         embeddedMessageBuilder.addField("You Flipped - ", flip, true)
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return true
-    }
 }

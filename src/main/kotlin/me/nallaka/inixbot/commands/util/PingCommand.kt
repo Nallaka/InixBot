@@ -19,9 +19,4 @@ class PingCommand  : Command(PermissionLevel.DEFAULT) {
         embeddedMessageBuilder.addField(MessageEmbed.Field("Pong! :ping_pong:", java.lang.Long.toString(commandContainer.author.jda.ping) + "ms", true))
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return true
-    }
 }

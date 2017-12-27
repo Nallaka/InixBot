@@ -30,9 +30,4 @@ class RngCommand : Command(PermissionLevel.DEFAULT) {
         }
 
     }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return true
-    }
 }

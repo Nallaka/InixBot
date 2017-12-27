@@ -21,9 +21,4 @@ class ShutdownCommand : Command(PermissionLevel.ADMIN) {
         InixBot.jda.shutdown()
         System.exit(0)
     }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return true
-    }
 }

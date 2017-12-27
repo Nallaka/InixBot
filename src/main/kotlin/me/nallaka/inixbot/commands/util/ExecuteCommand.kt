@@ -40,9 +40,4 @@ class ExecuteCommand : Command(PermissionLevel.DEFAULT) {
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
 
     }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return true
-    }
 }

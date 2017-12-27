@@ -18,9 +18,4 @@ class HelloCommand : Command(PermissionLevel.DEFAULT) {
         embeddedMessageBuilder.setTitle("Hello :wave:").setDescription(commandContainer.author.name)
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return true
-    }
 }

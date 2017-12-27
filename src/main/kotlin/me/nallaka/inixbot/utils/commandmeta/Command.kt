@@ -26,11 +26,14 @@ abstract class Command(val commandPermissionLevel: PermissionLevel) {
     abstract fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer)
 
     //executed: Logs command and returns if executed completely
-    abstract fun executed(commandContainer: CommandHandler.CommandContainer): Boolean
+    fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
+        commandLogger.logCommand(commandContainer)
+        return true
+    }
 
     //runHelpCommand: Send help message using annotation properties
-    fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "${getCmdProperties()?.name} ${getCmdProperties()?.emoji}", "${getCmdProperties()?.description}", "${getCmdProperties()?.usage}")
+    fun runHelpCommand(commandContainer: CommandHandler.CommandContainer) {
+        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "${getCmdProperties()?.name} ${getCmdProperties()?.emoji}", "${getCmdProperties()?.description}", "${getCmdProperties()?.usage}", "${getCmdProperties()?.isAdminOnly}")
     }
 
     //getCmdProperties: Returns the annotation properties

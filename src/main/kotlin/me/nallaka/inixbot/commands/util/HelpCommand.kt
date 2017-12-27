@@ -22,9 +22,4 @@ class HelpCommand : Command(PermissionLevel.DEFAULT) {
         embeddedMessageBuilder.addField("Utility Commands :tools:", "``changeprefix``, ``coinflip``, ``ping``, ``rng``", true)
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return true
-    }
 }

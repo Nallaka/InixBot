@@ -13,10 +13,11 @@ class CommandMessageHandler {
     }
 
     //Sends Embedded Help Message
-    fun sendHelpMessage(event: MessageReceivedEvent, embedBuilder: EmbedBuilder, helpTitle: String, helpDescription: String, helpUsage: String) {
+    fun sendHelpMessage(event: MessageReceivedEvent, embedBuilder: EmbedBuilder, helpTitle: String, helpDescription: String, helpUsage: String, isAdminCommand: String) {
         embedBuilder.setTitle(helpTitle)
                 .setDescription(helpDescription)
                 .addField("Usage", "``" + InixBot.USER_COMMAND_PREFIX + helpUsage + "``", true)
+                .addField("Admin Command", isAdminCommand, true )
         sendMessage(event, embedBuilder)
         clearEmbeddedBuilder(embedBuilder)
     }

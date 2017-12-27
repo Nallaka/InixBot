@@ -53,12 +53,17 @@ class CommandHandler : ListenerAdapter() {
             val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "You Don't Have Permission!", true).build()
             event.textChannel.sendMessage(messageBuilder).queue()
         } else {
-            if (isCommand(event, invoke) || isHelpCommand(event, invoke) && commandContainer.splitBeheadedCommand.isNotEmpty() && permissions.userHasCommandPermission(user, command)) {
+            if (isCommand(event, invoke) && commandContainer.splitBeheadedCommand.isNotEmpty() && permissions.userHasCommandPermission(user, command)) {
                 command.runCommand(args, commandContainer)
                 command.executed(commandContainer)
             } else if (isHelpCommand(event, invoke)) {
-                commandRegistry.getCommand(args[0])?.runHelpCommand(args, commandContainer)
-                command.executed(commandContainer)
+                if (args.isNotEmpty()) {
+                    commandRegistry.getCommand(args[0])?.runHelpCommand(commandContainer)
+                    command.executed(commandContainer)
+                } else {
+                    command.runCommand(args, commandContainer)
+                    command.executed(commandContainer)
+                }
             }
         }
     }

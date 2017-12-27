@@ -45,9 +45,4 @@ class EightBallCommand : Command(PermissionLevel.DEFAULT) {
         embeddedMessageBuilder.addField(":8ball: says", eightBallResponse, true)
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return false
-    }
 }
