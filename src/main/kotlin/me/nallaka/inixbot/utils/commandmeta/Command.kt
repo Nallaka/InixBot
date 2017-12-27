@@ -6,7 +6,6 @@ import me.nallaka.inixbot.handlers.CommandMessageHandler
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 import net.dv8tion.jda.core.EmbedBuilder
 import java.awt.Color
-
 abstract class Command(val commandPermissionLevel: PermissionLevel) {
     //Command Logger
     var commandLogger = CommandLogger()
@@ -23,10 +22,22 @@ abstract class Command(val commandPermissionLevel: PermissionLevel) {
     //Default Prefix
     protected var defaultCommandPrefix = InixBot.DEFAULT_COMMAND_PREFIX
 
+    //runCommand: Runs the command
     abstract fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer)
 
-    abstract fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer)
-
+    //executed: Logs command and returns if executed completely
     abstract fun executed(commandContainer: CommandHandler.CommandContainer): Boolean
 
+    //runHelpCommand: Send help message using annotation properties
+    fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
+        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "${getCmdProperties()?.name} ${getCmdProperties()?.emoji}", "${getCmdProperties()?.description}", "${getCmdProperties()?.usage}")
+    }
+
+    //getCmdProperties: Returns the annotation properties
+    fun getCmdProperties(): ICommand? {
+        return if (this.javaClass.isAnnotationPresent(ICommand::class.java))
+            this.javaClass.getAnnotation(ICommand::class.java)
+        else
+            null
+    }
 }
