@@ -2,14 +2,18 @@ package me.nallaka.inixbot.commands.util
 
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
-
+@ICommand(
+        name = "Bot Info",
+        emoji = ":newspaper:",
+        description = "Displays Bot Info",
+        usage = "_botinfo",
+        aliases = [""],
+        isOwnerOnly = false
+)
 class BotInfoCommand : Command(PermissionLevel.DEFAULT) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-    }
-
-    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "Bot Info", "Provides Information About InixBot", "_botinfo")
     }
 
     override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {

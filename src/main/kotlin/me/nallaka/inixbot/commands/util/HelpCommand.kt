@@ -2,8 +2,16 @@ package me.nallaka.inixbot.commands.util
 
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
-
+@ICommand(
+        name = "Help",
+        emoji = ":gear:",
+        description = "Helps You",
+        usage = "_help <command>",
+        aliases = [""],
+        isOwnerOnly = false
+)
 class HelpCommand : Command(PermissionLevel.DEFAULT) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         embeddedMessageBuilder.setTitle("Help :gear:")
@@ -12,10 +20,6 @@ class HelpCommand : Command(PermissionLevel.DEFAULT) {
         embeddedMessageBuilder.addField("Music Commands :musical_note:", "``music``, ", true)
         embeddedMessageBuilder.addField("Utility Commands :tools:", "``changeprefix``, ``coinflip``, ``ping``, ``rng``", true)
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
-    }
-
-    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "Help", "Helps you with Help?", "help help")
     }
 
     override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {

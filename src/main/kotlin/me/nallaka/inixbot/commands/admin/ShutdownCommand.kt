@@ -3,8 +3,16 @@ package me.nallaka.inixbot.commands.admin
 import me.nallaka.inixbot.InixBot
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
-
+@ICommand(
+        name = "Shutdown",
+        emoji = ":radio_button:",
+        description = "Shutsdown the bot",
+        usage = "_shutdown",
+        aliases = [],
+        isOwnerOnly = true
+)
 class ShutdownCommand : Command(PermissionLevel.ADMIN) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         if (commandContainer.author.id == "131068934907494400") {
@@ -16,9 +24,6 @@ class ShutdownCommand : Command(PermissionLevel.ADMIN) {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Only <@131068934907494400> can use this command", true
             )
         }
-    }
-
-    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
     }
 
     override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {

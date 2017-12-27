@@ -2,8 +2,16 @@ package me.nallaka.inixbot.commands.`fun`
 
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
-
+@ICommand(
+        name = "Eight Ball",
+        emoji = ":8ball:",
+        description = "Answers your Questions",
+        usage = "_8ball <question>",
+        aliases = [""],
+        isOwnerOnly = false
+)
 class EightBallCommand : Command(PermissionLevel.DEFAULT) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         var eightBallResponse = ""
@@ -35,10 +43,6 @@ class EightBallCommand : Command(PermissionLevel.DEFAULT) {
         }
         embeddedMessageBuilder.addField(":8ball: says", eightBallResponse, true)
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
-    }
-
-    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "8 Ball :8ball:", "You Ask, It Answers", "8ball")
     }
 
     override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {

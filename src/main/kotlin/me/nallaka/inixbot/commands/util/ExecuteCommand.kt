@@ -4,8 +4,16 @@ import bsh.Interpreter
 import bsh.InterpreterError
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
-
+@ICommand(
+        name = "Execute",
+        emoji = ":computer:",
+        description = "Executes a Java Expression",
+        usage = "_execute <expression>",
+        aliases = [""],
+        isOwnerOnly = true
+)
 class ExecuteCommand : Command(PermissionLevel.DEFAULT) {
     private var interpreter: Interpreter = Interpreter()
 
@@ -30,9 +38,6 @@ class ExecuteCommand : Command(PermissionLevel.DEFAULT) {
         }
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
 
-    }
-
-    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
     }
 
     override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {

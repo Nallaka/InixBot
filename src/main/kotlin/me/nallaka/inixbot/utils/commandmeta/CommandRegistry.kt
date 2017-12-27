@@ -10,7 +10,6 @@ import me.nallaka.inixbot.commands.util.ExecuteCommand
 import me.nallaka.inixbot.commands.util.HelpCommand
 import me.nallaka.inixbot.commands.util.PingCommand
 import me.nallaka.inixbot.commands.util.SearchCommand
-import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 
 class CommandRegistry {
     companion object {
@@ -37,7 +36,7 @@ class CommandRegistry {
         //Moderation Commands
         //Music Commands
         //Fun Commands
-        commandRegistry.put("coinflip", CoinFlipCommand(PermissionLevel.ADMIN))
+        commandRegistry.put("coinflip", CoinFlipCommand())
         commandRegistry.put("8ball", EightBallCommand())
         commandRegistry.put("hello", HelloCommand())
         commandRegistry.put("rng", RngCommand())

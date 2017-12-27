@@ -2,6 +2,7 @@ package me.nallaka.inixbot.commands.util
 
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
@@ -9,7 +10,14 @@ import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLDecoder
 import java.net.URLEncoder
-
+@ICommand(
+        name = "Search",
+        emoji = ":mag:",
+        description = "Searches the Interwebs",
+        usage = "_search <query>",
+        aliases = [""],
+        isOwnerOnly = false
+)
 class SearchCommand : Command(PermissionLevel.DEFAULT) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         if (args.isNotEmpty()) {
@@ -49,10 +57,6 @@ class SearchCommand : Command(PermissionLevel.DEFAULT) {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Input a Search", false)
         }
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
-    }
-
-    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "Google Search :mag_right:", "Search Google", "google <search>")
     }
 
     override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {

@@ -2,8 +2,16 @@ package me.nallaka.inixbot.commands.`fun`
 
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
-
+@ICommand(
+        name = "Random Number Generator",
+        emoji = ":game_die:",
+        description = "Generates a Number",
+        usage = "_rng <max_value>",
+        aliases = [""],
+        isOwnerOnly = false
+)
 class RngCommand : Command(PermissionLevel.DEFAULT) {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         try {
@@ -20,10 +28,6 @@ class RngCommand : Command(PermissionLevel.DEFAULT) {
             commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
         }
 
-    }
-
-    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "RNG :game_die:", "A Random Number Generator", "rng <number>")
     }
 
     override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
