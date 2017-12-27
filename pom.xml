@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-    <artifactId>InixBot</artifactId>
+    <artifactId>InixBot-Kotlin</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -98,7 +98,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>me.nallaka.inixbot.InixBot</mainClass>
+                                    <mainClass>me.nallaka.inixbot.InixBotKt</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
