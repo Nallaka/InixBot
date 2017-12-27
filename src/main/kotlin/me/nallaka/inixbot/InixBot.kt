@@ -7,6 +7,7 @@ import me.nallaka.inixbot.listeners.MessageListener
 import me.nallaka.inixbot.utils.commandmeta.CommandRegistry
 import me.nallaka.inixbot.utils.permissionmeta.Permissions
 import net.dv8tion.jda.core.AccountType
+import net.dv8tion.jda.core.JDA
 import net.dv8tion.jda.core.JDABuilder
 import java.io.FileReader
 
@@ -28,7 +29,7 @@ class InixBot {
         private val botToken = botConfig?.get("BOT_TOKEN") as? String
 
         //Create JDA Bot
-        val jda = JDABuilder(AccountType.BOT).setToken(botToken).buildBlocking()
+        val jda: JDA = JDABuilder(AccountType.BOT).setToken(botToken).buildBlocking()
     }
 }
 

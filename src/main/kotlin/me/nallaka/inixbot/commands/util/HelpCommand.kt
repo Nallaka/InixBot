@@ -18,8 +18,10 @@ class HelpCommand : Command() {
         embeddedMessageBuilder.setTitle("Help :gear:")
                 .setDescription("Do ``_help <command>`` for more information")
         embeddedMessageBuilder.addField("Fun Commands :boom:", "``8ball``, ``hello``,", true)
-        embeddedMessageBuilder.addField("Music Commands :musical_note:", "``music``, ", true)
-        embeddedMessageBuilder.addField("Utility Commands :tools:", "``changeprefix``, ``coinflip``, ``ping``, ``rng``", true)
+                .addField("Music Commands :musical_note:", "``music``, ", true)
+                .addField("Utility Commands :tools:", "``coinflip``, ``ping``, ``rng``", true)
+                .addField("Admin Commands :red_circle:", "``changeprefix``, ``shutdown``", true)
+
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
 }

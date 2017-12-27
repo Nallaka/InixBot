@@ -1,6 +1,7 @@
 package me.nallaka.inixbot.handlers
 
 import me.nallaka.inixbot.InixBot
+import me.nallaka.inixbot.InixBot.Companion.jda
 import me.nallaka.inixbot.utils.commandmeta.Command
 import me.nallaka.inixbot.utils.commandmeta.CommandRegistry
 import me.nallaka.inixbot.utils.permissionmeta.Permissions
@@ -49,6 +50,7 @@ class CommandHandler : ListenerAdapter() {
         val args = commandContainer.args
         val invoke = commandContainer.invoke
         val command = commandContainer.command
+        jda.asBot().jda.getTextChannelById(commandContainer.event.textChannel.id).sendTyping().queue()
         if (command?.getCmdProperties()!!.isOwnerOnly && user.id != "131068934907494400") {
             val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "You Don't Have Permission!", true).build()
             event.textChannel.sendMessage(messageBuilder).queue()
