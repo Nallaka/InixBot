@@ -10,6 +10,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Helps You",
         usage = "_help <command>",
         aliases = [""],
+        isAdminOnly = false,
         isOwnerOnly = false
 )
 class HelpCommand : Command(PermissionLevel.DEFAULT) {

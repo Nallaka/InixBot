@@ -11,6 +11,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Changes the command prefix",
         usage = "_changeprefix <prefix>",
         aliases = ["changeprefix"],
+        isAdminOnly = true,
         isOwnerOnly = false
 )
 class ChangePrefixCommand : Command(PermissionLevel.ADMIN) {

@@ -10,6 +10,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Flips a Coin",
         usage = "_coinflip",
         aliases = [""],
+        isAdminOnly = false,
         isOwnerOnly = false
 )
 class CoinFlipCommand : Command(PermissionLevel.DEFAULT) {

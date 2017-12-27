@@ -12,6 +12,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Executes a Java Expression",
         usage = "_execute <expression>",
         aliases = [""],
+        isAdminOnly = false,
         isOwnerOnly = true
 )
 class ExecuteCommand : Command(PermissionLevel.DEFAULT) {

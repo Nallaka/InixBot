@@ -16,6 +16,7 @@ import java.net.URLEncoder
         description = "Searches the Interwebs",
         usage = "_search <query>",
         aliases = [""],
+        isAdminOnly = false,
         isOwnerOnly = false
 )
 class SearchCommand : Command(PermissionLevel.DEFAULT) {

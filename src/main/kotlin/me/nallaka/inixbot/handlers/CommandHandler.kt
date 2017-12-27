@@ -4,10 +4,12 @@ import me.nallaka.inixbot.InixBot
 import me.nallaka.inixbot.utils.commandmeta.Command
 import me.nallaka.inixbot.utils.commandmeta.CommandRegistry
 import me.nallaka.inixbot.utils.permissionmeta.Permissions
+import net.dv8tion.jda.core.EmbedBuilder
 import net.dv8tion.jda.core.entities.Message
 import net.dv8tion.jda.core.entities.User
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent
 import net.dv8tion.jda.core.hooks.ListenerAdapter
+import java.awt.Color
 
 class CommandHandler : ListenerAdapter() {
     //Create CommandRegistry Instance
@@ -47,12 +49,17 @@ class CommandHandler : ListenerAdapter() {
         val args = commandContainer.args
         val invoke = commandContainer.invoke
         val command = commandContainer.command
-        if (isCommand(event, invoke) || isHelpCommand(event, invoke) && commandContainer.splitBeheadedCommand.isNotEmpty() && permissions.userHasCommandPermission(user, command)) {
-            command?.runCommand(args, commandContainer)
-            command?.executed(commandContainer)
-        } else if (isHelpCommand(event, invoke)) {
-            commandRegistry.getCommand(args[0])?.runHelpCommand(args, commandContainer)
-            command?.executed(commandContainer)
+        if (command?.getCmdProperties()!!.isOwnerOnly && user.id != "131068934907494400") {
+            val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "You Don't Have Permission!", true).build()
+            event.textChannel.sendMessage(messageBuilder).queue()
+        } else {
+            if (isCommand(event, invoke) || isHelpCommand(event, invoke) && commandContainer.splitBeheadedCommand.isNotEmpty() && permissions.userHasCommandPermission(user, command)) {
+                command.runCommand(args, commandContainer)
+                command.executed(commandContainer)
+            } else if (isHelpCommand(event, invoke)) {
+                commandRegistry.getCommand(args[0])?.runHelpCommand(args, commandContainer)
+                command.executed(commandContainer)
+            }
         }
     }
 }

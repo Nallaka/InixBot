@@ -10,6 +10,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Generates a Number",
         usage = "_rng <max_value>",
         aliases = [""],
+        isAdminOnly = false,
         isOwnerOnly = false
 )
 class RngCommand : Command(PermissionLevel.DEFAULT) {

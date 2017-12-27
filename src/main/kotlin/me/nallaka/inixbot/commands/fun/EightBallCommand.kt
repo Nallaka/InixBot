@@ -10,6 +10,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Answers your Questions",
         usage = "_8ball <question>",
         aliases = [""],
+        isAdminOnly = false,
         isOwnerOnly = false
 )
 class EightBallCommand : Command(PermissionLevel.DEFAULT) {

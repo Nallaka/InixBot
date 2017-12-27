@@ -8,5 +8,6 @@ annotation class ICommand(
         val description: String = "No description valid for this command.",
         val usage: String = "No usage valid for this command.",
         val aliases: Array<String> = [],
+        val isAdminOnly: Boolean = false,
         val isOwnerOnly: Boolean = false
         )

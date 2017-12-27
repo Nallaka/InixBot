@@ -10,6 +10,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Displays Bot Info",
         usage = "_botinfo",
         aliases = [""],
+        isAdminOnly = false,
         isOwnerOnly = false
 )
 class BotInfoCommand : Command(PermissionLevel.DEFAULT) {

@@ -11,6 +11,7 @@ import net.dv8tion.jda.core.entities.MessageEmbed
         description = "Returns your Ping",
         usage = "_ping",
         aliases = [""],
+        isAdminOnly = false,
         isOwnerOnly = false
 )
 class PingCommand  : Command(PermissionLevel.DEFAULT) {

@@ -10,6 +10,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Says Hello!",
         usage = "_hello",
         aliases = [""],
+        isAdminOnly = false,
         isOwnerOnly = false
 )
 class HelloCommand : Command(PermissionLevel.DEFAULT) {
