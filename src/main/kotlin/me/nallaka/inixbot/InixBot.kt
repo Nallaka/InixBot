@@ -20,7 +20,7 @@ class InixBot {
         //Set User Command Prefix
         var USER_COMMAND_PREFIX = "."
         //YAML File Reader
-        private val filePath = System.getProperty("user.dir") + "botConfig.yml"
+        private val filePath = System.getProperty("user.dir") + "/botConfig.yml"
         private val yamlReader = YamlReader(FileReader(filePath))
         private val botConfig = yamlReader.read() as? Map<*,*>
 

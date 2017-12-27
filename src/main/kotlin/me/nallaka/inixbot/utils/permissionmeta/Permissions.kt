@@ -11,7 +11,7 @@ import java.io.FileWriter
 class Permissions {
     companion object {
         //Filepath
-        private var filePath = System.getProperty("user.dir") + "permissions.yml"
+        private var filePath = System.getProperty("user.dir") + "/permissions.yml"
 
         //Create userPermissionMap
         var userPermissionRegistry: HashMap<String, PermissionLevel> = hashMapOf()

@@ -3,7 +3,7 @@ package me.nallaka.inixbot.utils.commandmeta
 import me.nallaka.inixbot.commands.`fun`.CoinFlipCommand
 import me.nallaka.inixbot.commands.`fun`.EightBallCommand
 import me.nallaka.inixbot.commands.`fun`.HelloCommand
-import me.nallaka.inixbot.commands.`fun`.RollDiceCommand
+import me.nallaka.inixbot.commands.`fun`.RngCommand
 import me.nallaka.inixbot.commands.admin.ChangePrefixCommand
 import me.nallaka.inixbot.commands.admin.ShutdownCommand
 import me.nallaka.inixbot.commands.util.ExecuteCommand
@@ -40,7 +40,7 @@ class CommandRegistry {
         commandRegistry.put("coinflip", CoinFlipCommand(PermissionLevel.ADMIN))
         commandRegistry.put("8ball", EightBallCommand())
         commandRegistry.put("hello", HelloCommand())
-        commandRegistry.put("rolldice", RollDiceCommand())
+        commandRegistry.put("rolldice", RngCommand())
         //Util Commands
         commandRegistry.put("help", HelpCommand())
         commandRegistry.put("ping", PingCommand())
