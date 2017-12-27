@@ -23,6 +23,7 @@ class InixBot {
 
 fun main(args : Array<String>) {
     //YAML File Reader
+    println("test")
     val filePath = System.getProperty("user.dir") + "/src/main/kotlin/resources/botConfig.yml"
     val yamlReader = YamlReader(FileReader(filePath))
     val botConfig = yamlReader.read() as? Map<*,*>
@@ -48,4 +49,5 @@ fun main(args : Array<String>) {
     permissions.loadGuildUsersPermissions()
     permissions.setGuildUsersDefaultPermissions(jda)
     permissions.printPermissions()
+
 }

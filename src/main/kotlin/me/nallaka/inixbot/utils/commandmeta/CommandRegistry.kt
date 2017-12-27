@@ -5,6 +5,7 @@ import me.nallaka.inixbot.commands.`fun`.EightBallCommand
 import me.nallaka.inixbot.commands.`fun`.HelloCommand
 import me.nallaka.inixbot.commands.`fun`.RollDiceCommand
 import me.nallaka.inixbot.commands.admin.ChangePrefixCommand
+import me.nallaka.inixbot.commands.admin.ShutdownCommand
 import me.nallaka.inixbot.commands.util.ExecuteCommand
 import me.nallaka.inixbot.commands.util.HelpCommand
 import me.nallaka.inixbot.commands.util.PingCommand
@@ -32,6 +33,7 @@ class CommandRegistry {
     fun setCommandRegistry() {
         //Admin Commands
         commandRegistry.put("changeprefix", ChangePrefixCommand())
+        commandRegistry.put("shutdown", ShutdownCommand())
         //Moderation Commands
         //Music Commands
         //Fun Commands
