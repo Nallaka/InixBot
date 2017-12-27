@@ -3,10 +3,10 @@ package me.nallaka.inixbot.utils.commandmeta
 import me.nallaka.inixbot.InixBot
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.handlers.CommandMessageHandler
-import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 import net.dv8tion.jda.core.EmbedBuilder
 import java.awt.Color
-abstract class Command(val commandPermissionLevel: PermissionLevel) {
+
+abstract class Command {
     //Command Logger
     var commandLogger = CommandLogger()
 
@@ -33,7 +33,7 @@ abstract class Command(val commandPermissionLevel: PermissionLevel) {
 
     //runHelpCommand: Send help message using annotation properties
     fun runHelpCommand(commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "${getCmdProperties()?.name} ${getCmdProperties()?.emoji}", "${getCmdProperties()?.description}", "${getCmdProperties()?.usage}", "${getCmdProperties()?.isAdminOnly}")
+        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "${getCmdProperties()?.name} ${getCmdProperties()?.emoji}", "${getCmdProperties()?.description}", "${getCmdProperties()?.usage}", "${getCmdProperties()?.commandPermissionLevel}")
     }
 
     //getCmdProperties: Returns the annotation properties

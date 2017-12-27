@@ -10,10 +10,10 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Says Hello!",
         usage = "_hello",
         aliases = [""],
-        isAdminOnly = false,
+        commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )
-class HelloCommand : Command(PermissionLevel.DEFAULT) {
+class HelloCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         embeddedMessageBuilder.setTitle("Hello :wave:").setDescription(commandContainer.author.name)
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)

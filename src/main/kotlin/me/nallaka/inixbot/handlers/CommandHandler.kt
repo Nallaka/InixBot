@@ -64,6 +64,9 @@ class CommandHandler : ListenerAdapter() {
                     command.runCommand(args, commandContainer)
                     command.executed(commandContainer)
                 }
+            } else if (isCommand(event, invoke) && !permissions.userHasCommandPermission(user, command)) {
+                val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "You Don't Have Permission!", true).build()
+                event.textChannel.sendMessage(messageBuilder).queue()
             }
         }
     }

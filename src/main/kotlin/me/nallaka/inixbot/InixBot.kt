@@ -18,7 +18,7 @@ class InixBot {
         val DEFAULT_COMMAND_PREFIX = "_"
 
         //Set User Command Prefix
-        var USER_COMMAND_PREFIX = "."
+        var USER_COMMAND_PREFIX = "_"
         //YAML File Reader
         private val filePath = System.getProperty("user.dir") + "/botConfig.yml"
         private val yamlReader = YamlReader(FileReader(filePath))

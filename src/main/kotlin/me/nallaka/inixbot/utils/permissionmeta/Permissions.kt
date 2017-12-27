@@ -72,7 +72,7 @@ class Permissions {
 
     //userHasCommandPermission: Returns if user has permission for a command
     fun userHasCommandPermission(user: User, command: Command?) : Boolean =
-            userPermissionRegistry.get(user.id)?.ordinal!! >= command?.commandPermissionLevel!!.getPermissionLevelOrdinal()
+            userPermissionRegistry.get(user.id)?.ordinal!! >= command?.getCmdProperties()!!.commandPermissionLevel.getPermissionLevelOrdinal()
 
     //printPermissions: Prints all Users and corresponding PermissionLevel
     fun printPermissions() {

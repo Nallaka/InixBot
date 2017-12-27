@@ -10,10 +10,10 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Generates a Number",
         usage = "_rng <max_value>",
         aliases = [""],
-        isAdminOnly = false,
+        commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )
-class RngCommand : Command(PermissionLevel.DEFAULT) {
+class RngCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         try {
             val diceArg = Integer.parseInt(args[0])

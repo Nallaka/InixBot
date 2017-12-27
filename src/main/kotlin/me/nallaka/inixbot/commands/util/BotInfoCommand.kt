@@ -10,10 +10,10 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Displays Bot Info",
         usage = "_botinfo",
         aliases = [""],
-        isAdminOnly = false,
+        commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )
-class BotInfoCommand : Command(PermissionLevel.DEFAULT) {
+class BotInfoCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
     }
 }

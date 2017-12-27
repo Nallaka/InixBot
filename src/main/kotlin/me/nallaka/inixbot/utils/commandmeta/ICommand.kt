@@ -1,5 +1,7 @@
 package me.nallaka.inixbot.utils.commandmeta
 
+import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
+
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.TYPE, AnnotationTarget.CLASS)
 annotation class ICommand(
@@ -8,6 +10,6 @@ annotation class ICommand(
         val description: String = "No description valid for this command.",
         val usage: String = "No usage valid for this command.",
         val aliases: Array<String> = [],
-        val isAdminOnly: Boolean = false,
+        val commandPermissionLevel: PermissionLevel = PermissionLevel.DEFAULT,
         val isOwnerOnly: Boolean = false
         )

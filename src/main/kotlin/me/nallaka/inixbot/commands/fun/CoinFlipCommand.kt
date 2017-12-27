@@ -10,10 +10,10 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Flips a Coin",
         usage = "_coinflip",
         aliases = [""],
-        isAdminOnly = false,
+        commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )
-class CoinFlipCommand : Command(PermissionLevel.DEFAULT) {
+class CoinFlipCommand : Command() {
 
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         val random = (Math.random() * 1000).toInt()

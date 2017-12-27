@@ -16,10 +16,10 @@ import java.net.URLEncoder
         description = "Searches the Interwebs",
         usage = "_search <query>",
         aliases = [""],
-        isAdminOnly = false,
+        commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )
-class SearchCommand : Command(PermissionLevel.DEFAULT) {
+class SearchCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         if (args.isNotEmpty()) {
             embeddedMessageBuilder.setTitle("Search Results :mag_right:")

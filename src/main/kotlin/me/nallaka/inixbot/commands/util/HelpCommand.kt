@@ -10,10 +10,10 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Helps You",
         usage = "_help <command>",
         aliases = [""],
-        isAdminOnly = false,
+        commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )
-class HelpCommand : Command(PermissionLevel.DEFAULT) {
+class HelpCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         embeddedMessageBuilder.setTitle("Help :gear:")
                 .setDescription("Do ``_help <command>`` for more information")

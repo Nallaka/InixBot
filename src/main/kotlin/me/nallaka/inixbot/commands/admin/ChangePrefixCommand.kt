@@ -11,10 +11,10 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Changes the command prefix",
         usage = "_changeprefix <prefix>",
         aliases = ["changeprefix"],
-        isAdminOnly = true,
+        commandPermissionLevel = PermissionLevel.ADMIN,
         isOwnerOnly = false
 )
-class ChangePrefixCommand : Command(PermissionLevel.ADMIN) {
+class ChangePrefixCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         val cmdProperties = getCmdProperties()
         if (args.isNotEmpty()) {

@@ -12,30 +12,26 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         description = "Executes a Java Expression",
         usage = "_execute <expression>",
         aliases = [""],
-        isAdminOnly = false,
+        commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = true
 )
-class ExecuteCommand : Command(PermissionLevel.DEFAULT) {
+class ExecuteCommand : Command() {
     private var interpreter: Interpreter = Interpreter()
 
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        if (commandContainer.author.id == "131068934907494400") {
-            interpreter.set("event", commandContainer.event)
-            interpreter.set("args", args)
+        interpreter.set("event", commandContainer.event)
+        interpreter.set("args", args)
 
-            if (args.isNotEmpty()) {
-                embeddedMessageBuilder.setTitle("Execute :computer:")
-                try {
-                    interpreter.eval("value = ${commandContainer.content.substring(8)}")
-                    embeddedMessageBuilder.addField("Returned", "${interpreter.get("value")}", true)
-                } catch (e: InterpreterError) {
-                    embeddedMessageBuilder.addField("ERROR :no_entry:", "Can Not Evaluate", true)
-                }
-            } else {
-                embeddedMessageBuilder.addField("ERROR :no_entry:", "Please Input an Expression", true)
+        if (args.isNotEmpty()) {
+            embeddedMessageBuilder.setTitle("Execute :computer:")
+            try {
+                interpreter.eval("value = ${commandContainer.content.substring(8)}")
+                embeddedMessageBuilder.addField("Returned", "${interpreter.get("value")}", true)
+            } catch (e: InterpreterError) {
+                embeddedMessageBuilder.addField("ERROR :no_entry:", "Can Not Evaluate", true)
             }
         } else {
-            embeddedMessageBuilder.addField("ERROR :no_entry:", "Execute is only usable by <@131068934907494400>", true)
+            embeddedMessageBuilder.addField("ERROR :no_entry:", "Please Input an Expression", true)
         }
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
 
