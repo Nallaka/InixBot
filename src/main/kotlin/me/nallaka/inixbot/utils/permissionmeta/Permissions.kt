@@ -23,9 +23,16 @@ class Permissions {
     //setGuildUsersDefaultPermissions: Gets all users not present in the userPermissionRegistry and gives default permission
     fun setGuildUsersDefaultPermissions(jda: JDA) {
         val userList = jda.users
+        val guild = jda.guilds[0]
         userList
                 .filter { !userPermissionRegistry.containsKey(it.id) && !it.isBot }
-                .forEach { userPermissionRegistry.put(it.id, PermissionLevel.DEFAULT) }
+                .forEach {
+                    if (it.id != guild.owner.user.id) {
+                        userPermissionRegistry.put(it.id, PermissionLevel.DEFAULT)
+                    } else {
+                        userPermissionRegistry.put(it.id, PermissionLevel.OWNER)
+                    }
+                }
         updateYaml()
     }
 

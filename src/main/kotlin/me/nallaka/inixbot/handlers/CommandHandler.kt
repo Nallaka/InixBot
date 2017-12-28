@@ -50,26 +50,32 @@ class CommandHandler : ListenerAdapter() {
         val args = commandContainer.args
         val invoke = commandContainer.invoke
         val command = commandContainer.command
-        jda.asBot().jda.getTextChannelById(commandContainer.event.textChannel.id).sendTyping().queue()
-        if (command?.getCmdProperties()!!.isOwnerOnly && user.id != "131068934907494400") {
-            val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "You Don't Have Permission!", true).build()
-            event.textChannel.sendMessage(messageBuilder).queue()
-        } else {
-            if (isCommand(event, invoke) && commandContainer.splitBeheadedCommand.isNotEmpty() && permissions.userHasCommandPermission(user, command)) {
-                command.runCommand(args, commandContainer)
-                command.executed(commandContainer)
-            } else if (isHelpCommand(event, invoke)) {
-                if (args.isNotEmpty()) {
-                    commandRegistry.getCommand(args[0])?.runHelpCommand(commandContainer)
-                    command.executed(commandContainer)
-                } else {
-                    command.runCommand(args, commandContainer)
-                    command.executed(commandContainer)
-                }
-            } else if (isCommand(event, invoke) && !permissions.userHasCommandPermission(user, command)) {
+        try {
+            jda.asBot().jda.getTextChannelById(commandContainer.event.textChannel.id).sendTyping().queue()
+            if (command?.getCmdProperties()!!.isOwnerOnly && user.id != "131068934907494400") {
                 val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "You Don't Have Permission!", true).build()
                 event.textChannel.sendMessage(messageBuilder).queue()
+            } else {
+                if (isCommand(event, invoke) && commandContainer.splitBeheadedCommand.isNotEmpty() && permissions.userHasCommandPermission(user, command)) {
+                    command.runCommand(args, commandContainer)
+                    command.executed(commandContainer)
+                } else if (isHelpCommand(event, invoke)) {
+                    if (args.isNotEmpty()) {
+                        commandRegistry.getCommand(args[0])?.runHelpCommand(commandContainer)
+                        command.executed(commandContainer)
+                    } else {
+                        command.runCommand(args, commandContainer)
+                        command.executed(commandContainer)
+                    }
+                } else if (isCommand(event, invoke) && !permissions.userHasCommandPermission(user, command)) {
+                    val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "You Don't Have Permission!", true).build()
+                    event.textChannel.sendMessage(messageBuilder).queue()
+                }
             }
+        } catch (e: KotlinNullPointerException) {
+            val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "That's not a valid command!", true).build()
+            event.textChannel.sendMessage(messageBuilder).queue()
+            e.printStackTrace()
         }
     }
 }

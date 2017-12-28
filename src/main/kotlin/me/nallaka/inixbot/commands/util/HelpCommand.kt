@@ -19,6 +19,7 @@ class HelpCommand : Command() {
                 .setDescription("Do ``_help <command>`` for more information")
         embeddedMessageBuilder.addField("Fun Commands :boom:", "``8ball``, ``hello``,", true)
                 .addField("Music Commands :musical_note:", "``music``, ", true)
+                .addField("Info Commands :newspaper:", "``botinfo``, ``userinfo``, ``guildinfo``, ``devinfo``", true)
                 .addField("Utility Commands :tools:", "``coinflip``, ``ping``, ``rng``", true)
                 .addField("Admin Commands :red_circle:", "``changeprefix``, ``shutdown``", true)
 

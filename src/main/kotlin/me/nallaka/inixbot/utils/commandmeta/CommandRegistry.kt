@@ -6,6 +6,8 @@ import me.nallaka.inixbot.commands.`fun`.HelloCommand
 import me.nallaka.inixbot.commands.`fun`.RngCommand
 import me.nallaka.inixbot.commands.admin.ChangePrefixCommand
 import me.nallaka.inixbot.commands.admin.ShutdownCommand
+import me.nallaka.inixbot.commands.info.BotInfoCommand
+import me.nallaka.inixbot.commands.info.UserInfoCommand
 import me.nallaka.inixbot.commands.util.ExecuteCommand
 import me.nallaka.inixbot.commands.util.HelpCommand
 import me.nallaka.inixbot.commands.util.PingCommand
@@ -45,6 +47,8 @@ class CommandRegistry {
         commandRegistry.put("ping", PingCommand())
         commandRegistry.put("search", SearchCommand())
         commandRegistry.put("execute", ExecuteCommand())
+        commandRegistry.put("botinfo", BotInfoCommand())
+        commandRegistry.put("userinfo", UserInfoCommand())
     }
 
 }
