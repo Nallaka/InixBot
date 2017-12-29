@@ -8,7 +8,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         name = "Random Number Generator",
         emoji = ":game_die:",
         description = "Generates a Number",
-        usage = "_rng <max_value>",
+        usage = "rng <max_value>",
         aliases = [""],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false

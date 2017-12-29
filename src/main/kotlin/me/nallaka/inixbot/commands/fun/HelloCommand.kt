@@ -8,7 +8,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         name = "Hello",
         emoji = ":wave:",
         description = "Says Hello!",
-        usage = "_hello",
+        usage = "hello",
         aliases = [""],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false

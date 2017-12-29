@@ -9,7 +9,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         name = "Bot Info",
         emoji = ":newspaper:",
         description = "Displays Bot Info",
-        usage = "_botinfo",
+        usage = "botinfo",
         aliases = [""],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false

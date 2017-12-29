@@ -11,7 +11,7 @@ import net.dv8tion.jda.core.entities.User
         name = "User Info",
         emoji = ":newspaper:",
         description = "Displays a Users Info",
-        usage = "_userinfo",
+        usage = "userinfo",
         aliases = [""],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false

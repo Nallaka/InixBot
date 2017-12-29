@@ -9,7 +9,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         name = "Dev Info",
         emoji = ":computer:",
         description = "Provides Info for Devs",
-        usage = "_devinfo",
+        usage = "devinfo",
         aliases = [""],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false

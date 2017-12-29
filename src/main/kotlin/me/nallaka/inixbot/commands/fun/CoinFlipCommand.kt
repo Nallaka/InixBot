@@ -8,7 +8,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         name = "Coin Flip",
         emoji = "",
         description = "Flips a Coin",
-        usage = "_coinflip",
+        usage = "coinflip",
         aliases = [""],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
