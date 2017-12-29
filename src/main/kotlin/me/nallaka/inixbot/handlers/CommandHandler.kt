@@ -1,7 +1,7 @@
 package me.nallaka.inixbot.handlers
 
-import me.nallaka.inixbot.InixBot
 import me.nallaka.inixbot.InixBot.Companion.jda
+import me.nallaka.inixbot.utils.Consts
 import me.nallaka.inixbot.utils.commandmeta.Command
 import me.nallaka.inixbot.utils.commandmeta.CommandRegistry
 import me.nallaka.inixbot.utils.permissionmeta.Permissions
@@ -27,7 +27,7 @@ class CommandHandler : ListenerAdapter() {
         val rawMessage = event.message
         val content = rawMessage.content
         val author = event.author
-        val beheadedCommand = event.message.content.replaceFirst(InixBot.USER_COMMAND_PREFIX, "").replaceFirst(InixBot.DEFAULT_COMMAND_PREFIX, "").toLowerCase()
+        val beheadedCommand = event.message.content.replaceFirst(Consts.USER_COMMAND_PREFIX, "").replaceFirst(Consts.DEFAULT_COMMAND_PREFIX, "").toLowerCase()
         val splitBeheadedCommand = beheadedCommand.split("\\s".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
         val invoke = splitBeheadedCommand[0]
         val command = commandRegistry.getCommand(invoke)

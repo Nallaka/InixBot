@@ -10,7 +10,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         emoji = ":radio_button:",
         description = "Shutsdown the bot",
         usage = "_shutdown",
-        aliases = [],
+        aliases = [""],
         commandPermissionLevel = PermissionLevel.OWNER,
         isOwnerOnly = true
 )
