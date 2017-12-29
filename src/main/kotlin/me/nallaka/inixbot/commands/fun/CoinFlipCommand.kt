@@ -23,7 +23,6 @@ class CoinFlipCommand : Command() {
         } else {
             "Tails"
         }
-        println("test works")
         embeddedMessageBuilder.addField("You Flipped - ", flip, true)
         commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
