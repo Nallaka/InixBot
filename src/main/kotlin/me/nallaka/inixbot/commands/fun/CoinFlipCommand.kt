@@ -9,7 +9,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         emoji = "",
         description = "Flips a Coin",
         usage = "coinflip",
-        aliases = [""],
+        aliases = ["coinflip", "flipcoin"],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )

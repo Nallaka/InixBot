@@ -33,7 +33,7 @@ abstract class Command {
 
     //runHelpCommand: Send help message using annotation properties
     fun runHelpCommand(commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "${getCmdProperties()?.name} ${getCmdProperties()?.emoji}", "${getCmdProperties()?.description}", "${getCmdProperties()?.usage}", "${getCmdProperties()?.commandPermissionLevel}")
+        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, getCmdProperties())
     }
 
     //getCmdProperties: Returns the annotation properties

@@ -11,7 +11,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         emoji = ":gear:",
         description = "Changes the command prefix",
         usage = "changeprefix <prefix>",
-        aliases = [""],
+        aliases = ["changeprefix", "changeheader"],
         commandPermissionLevel = PermissionLevel.ADMIN,
         isOwnerOnly = false
 )

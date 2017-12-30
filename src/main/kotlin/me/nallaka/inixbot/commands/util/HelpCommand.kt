@@ -9,7 +9,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         emoji = ":gear:",
         description = "Helps You?",
         usage = "help <command>",
-        aliases = [""],
+        aliases = ["help"],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )

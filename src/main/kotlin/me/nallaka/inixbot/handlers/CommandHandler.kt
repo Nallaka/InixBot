@@ -37,7 +37,7 @@ class CommandHandler : ListenerAdapter() {
 
     //Checks if command with key invoke exists in CommandRegistry
     fun isCommand(event: MessageReceivedEvent, invoke: String) : Boolean =
-            event.author.jda.selfUser != event.author && commandRegistry.registryContainsKey(invoke) && invoke != "help"
+            event.author.jda.selfUser != event.author && commandRegistry.getCommandRegistry().containsKey(invoke) && invoke != "help"
 
     //Checks if command with key invoke is a "help" Command
     fun isHelpCommand(event: MessageReceivedEvent, invoke: String) : Boolean =

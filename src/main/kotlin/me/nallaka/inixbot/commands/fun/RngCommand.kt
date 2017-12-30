@@ -9,7 +9,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         emoji = ":game_die:",
         description = "Generates a Number",
         usage = "rng <max_value>",
-        aliases = [""],
+        aliases = ["rng"],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )

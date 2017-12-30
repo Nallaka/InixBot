@@ -15,7 +15,7 @@ import java.net.URLEncoder
         emoji = ":mag:",
         description = "Searches the Interwebs",
         usage = "search <query>",
-        aliases = [""],
+        aliases = ["search", "google"],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )

@@ -18,37 +18,48 @@ class CommandRegistry {
         //Initialize CommandRegistry
         var commandRegistry: HashMap<String, Command> = hashMapOf()
     }
-    //Adds new command to registry with name "commandString" and Command "command"
-    fun setCommand(commandString: String, command: Command) = commandRegistry.put(commandString, command)
-
-    //Gets command with Key "commandString"
-    fun getCommand(commandString: String ) : Command? = commandRegistry[commandString]
-
-    //Checks if commandRegistry contains Key "key"
-    fun registryContainsKey(key: String) : Boolean = commandRegistry.containsKey(key)
-
-    //Returns complete commandRegistry
-    fun getCommandRegistry() : MutableMap<String, Command> = commandRegistry
 
     //Sets commandRegistry with original Commands
     fun setCommandRegistry() {
         //Admin Commands
-        commandRegistry.put("changeprefix", ChangePrefixCommand())
-        commandRegistry.put("shutdown", ShutdownCommand())
+        registerCommand(ChangePrefixCommand())
+        registerCommand(ShutdownCommand())
+
         //Moderation Commands
+
         //Music Commands
+
         //Fun Commands
-        commandRegistry.put("coinflip", CoinFlipCommand())
-        commandRegistry.put("8ball", EightBallCommand())
-        commandRegistry.put("hello", HelloCommand())
-        commandRegistry.put("rng", RngCommand())
+        registerCommand(CoinFlipCommand())
+        registerCommand(EightBallCommand())
+        registerCommand(HelloCommand())
+        registerCommand(RngCommand())
+
         //Util Commands
-        commandRegistry.put("help", HelpCommand())
-        commandRegistry.put("ping", PingCommand())
-        commandRegistry.put("search", SearchCommand())
-        commandRegistry.put("execute", ExecuteCommand())
-        commandRegistry.put("botinfo", BotInfoCommand())
-        commandRegistry.put("userinfo", UserInfoCommand())
+        registerCommand(HelpCommand())
+        registerCommand(PingCommand())
+        registerCommand(SearchCommand())
+        registerCommand(ExecuteCommand())
+        registerCommand(BotInfoCommand())
+        registerCommand(UserInfoCommand())
     }
 
+    //registerCommand: Registers a new command with all given aliases
+    fun registerCommand(command: Command) {
+        if (!command.javaClass.isAnnotationPresent(ICommand::class.java)) {
+            println("[ERROR] No aliases given in command ${command.javaClass.name}")
+        } else {
+            for (alias: String in command.getCmdProperties()!!.aliases) {
+                commandRegistry.put(alias.toLowerCase(), command)
+            }
+        }
+    }
+
+    //setCommand: Adds new command to registry with name "commandString" and Command "command"
+    fun setCommand(commandString: String, command: Command) = commandRegistry.put(commandString, command)
+
+    //getCommandRegistry: Returns complete commandRegistry
+    fun getCommandRegistry() : MutableMap<String, Command> = commandRegistry
+
+    fun getCommand(commandString: String ) : Command? = commandRegistry[commandString]
 }

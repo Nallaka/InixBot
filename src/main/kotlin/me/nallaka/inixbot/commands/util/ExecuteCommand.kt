@@ -11,7 +11,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         emoji = ":computer:",
         description = "Executes a Java Expression",
         usage = "execute <expression>",
-        aliases = [""],
+        aliases = ["execute", "getval"],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = true
 )

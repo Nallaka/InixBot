@@ -9,7 +9,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         emoji = ":wave:",
         description = "Says Hello!",
         usage = "hello",
-        aliases = [""],
+        aliases = ["hello", "hi"],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )

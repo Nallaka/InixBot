@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.entities.MessageEmbed
         emoji = ":ping_pong:",
         description = "Returns your Ping",
         usage = "ping",
-        aliases = [""],
+        aliases = ["ping"],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )

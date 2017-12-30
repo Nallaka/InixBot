@@ -9,7 +9,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         emoji = ":8ball:",
         description = "Answers your Questions",
         usage = "8ball <question>",
-        aliases = [""],
+        aliases = ["8ball", "eightball"],
         commandPermissionLevel = PermissionLevel.DEFAULT,
         isOwnerOnly = false
 )
