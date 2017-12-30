@@ -24,6 +24,6 @@ class CoinFlipCommand : Command() {
             "Tails"
         }
         embeddedMessageBuilder.addField("You Flipped - ", flip, true)
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+        sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
 }

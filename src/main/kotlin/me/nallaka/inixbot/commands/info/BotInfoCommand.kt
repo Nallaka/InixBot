@@ -20,7 +20,7 @@ class BotInfoCommand : Command() {
                 .setTitle("Inix Bot")
                 .setDescription("Made with **{JDA}** by Nallaka#9253")
                 .setThumbnail(jda.selfUser.avatarUrl)
-                .addField("Bot ID", "Coming Soon", true) //395413174456942592
+                .addField("Bot ID", jda.selfUser.id, true)
                 .addField("Guilds", "${jda.guilds.size}", true)
                 .addField("Users", "${jda.users.size}", true)
                 .addField("Invite Link", "Coming Soon", true)

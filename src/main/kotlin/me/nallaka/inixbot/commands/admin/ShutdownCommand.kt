@@ -26,7 +26,7 @@ class ShutdownCommand : Command() {
             System.exit(0)
         } else {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Only <@131068934907494400> can use this command", true)
-            commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+            sendMessage(commandContainer.event, embeddedMessageBuilder)
         }
     }
 }

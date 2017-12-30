@@ -24,8 +24,8 @@ class RngCommand : Command() {
             }
             commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
         } catch (e: ArrayIndexOutOfBoundsException) {
-            embeddedMessageBuilder.addField("ERROR :game_die:", "Input a RNG value", true)
-            commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+            embeddedMessageBuilder.addField("ERROR :game_die:", "Usage: ${getCmdProperties()?.usage}", true)
+            sendMessage(commandContainer.event, embeddedMessageBuilder)
         }
 
     }

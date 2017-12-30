@@ -27,6 +27,6 @@ class ChangePrefixCommand : Command() {
         } else if (!args.isNotEmpty()) {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Input a New Header", true)
         }
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+        sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
 }
