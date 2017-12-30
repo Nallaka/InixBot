@@ -2,7 +2,7 @@ package me.nallaka.inixbot
 
 import me.nallaka.inixbot.listeners.EventListener
 import me.nallaka.inixbot.listeners.MessageListener
-import me.nallaka.inixbot.utils.Consts
+import me.nallaka.inixbot.utils.BotProperties
 import me.nallaka.inixbot.utils.commandmeta.CommandRegistry
 import me.nallaka.inixbot.utils.permissionmeta.Permissions
 import net.dv8tion.jda.core.AccountType
@@ -14,12 +14,13 @@ class InixBot {
 
     companion object {
         //Create JDA Bot
-        val jda: JDA = JDABuilder(AccountType.BOT).setToken(Consts.BOT_TOKEN).buildBlocking()
+        val jda: JDA = JDABuilder(AccountType.BOT).setToken(BotProperties.BOT_TOKEN).buildBlocking()
     }
 }
 
 fun main(args : Array<String>) {
-    val jda: JDA = JDABuilder(AccountType.BOT).setToken(Consts.BOT_TOKEN).buildBlocking()
+    //Creating main JDA object
+    val jda: JDA = JDABuilder(AccountType.BOT).setToken(BotProperties.BOT_TOKEN).buildBlocking()
 
     //Adding MessageListener Listener
     jda.addEventListener(MessageListener())
@@ -36,4 +37,6 @@ fun main(args : Array<String>) {
     permissions.loadGuildUsersPermissions()
     permissions.setGuildUsersDefaultPermissions(jda)
     permissions.printPermissions()
+
+    BotProperties.botConfigYamlWriter.write(BotProperties.BOT_CONFIG)
 }

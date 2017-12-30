@@ -2,7 +2,7 @@ package me.nallaka.inixbot.utils.permissionmeta
 
 import com.esotericsoftware.yamlbeans.YamlReader
 import com.esotericsoftware.yamlbeans.YamlWriter
-import me.nallaka.inixbot.utils.Consts
+import me.nallaka.inixbot.utils.BotProperties
 import me.nallaka.inixbot.utils.commandmeta.Command
 import net.dv8tion.jda.core.JDA
 import net.dv8tion.jda.core.entities.User
@@ -15,7 +15,7 @@ class Permissions {
         var userPermissionRegistry: HashMap<String, PermissionLevel> = hashMapOf()
 
         //Create YamlReader and YamlWriter
-        private var permissionYamlReader = YamlReader(FileReader(Consts.PERMISSIONS_FILE_PATH))
+        private var permissionYamlReader = YamlReader(FileReader(BotProperties.PERMISSIONS_FILE_PATH))
     }
 
     //setGuildUsersDefaultPermissions: Gets all users not present in the userPermissionRegistry and gives default permission
@@ -80,16 +80,10 @@ class Permissions {
     fun userHasCommandPermission(user: User, command: Command?) : Boolean =
             userPermissionRegistry.get(user.id)?.ordinal!! >= command?.getCmdProperties()!!.commandPermissionLevel.getPermissionLevelOrdinal()
 
-    //printPermissions: Prints all Users and corresponding PermissionLevel
-    fun printPermissions() {
-        for (entry: Map.Entry<String, PermissionLevel> in userPermissionRegistry) {
-            println("[User] ${entry.key} [Permission] ${entry.value}")
-        }
-    }
 
     //Update the permissions.yml file with all changes
     private fun updateYaml() {
-        val permissionYamlWriter = YamlWriter(FileWriter(Consts.PERMISSIONS_FILE_PATH))
+        val permissionYamlWriter = YamlWriter(FileWriter(BotProperties.PERMISSIONS_FILE_PATH))
         try {
             with(permissionYamlWriter) {
                 write(userPermissionRegistry)
@@ -99,5 +93,12 @@ class Permissions {
             e.printStackTrace()
         }
         permissionYamlWriter.clearAnchors()
+    }
+
+    //printPermissions: Prints all Users and corresponding PermissionLevel
+    fun printPermissions() {
+        for (entry: Map.Entry<String, PermissionLevel> in userPermissionRegistry) {
+            println("[User] ${entry.key} [Permission] ${entry.value}")
+        }
     }
 }

@@ -55,9 +55,6 @@ class CommandRegistry {
         }
     }
 
-    //setCommand: Adds new command to registry with name "commandString" and Command "command"
-    fun setCommand(commandString: String, command: Command) = commandRegistry.put(commandString, command)
-
     //getCommandRegistry: Returns complete commandRegistry
     fun getCommandRegistry() : MutableMap<String, Command> = commandRegistry
 

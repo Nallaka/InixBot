@@ -2,7 +2,7 @@ package me.nallaka.inixbot.utils.commandmeta
 
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.handlers.CommandMessageHandler
-import me.nallaka.inixbot.utils.Consts
+import me.nallaka.inixbot.utils.BotProperties
 import net.dv8tion.jda.core.EmbedBuilder
 import java.awt.Color
 
@@ -17,10 +17,10 @@ abstract class Command {
     var commandMessageHandler = CommandMessageHandler()
 
     //User Defined Prefix
-    protected var userCommandPrefix = Consts.USER_COMMAND_PREFIX
+    protected var userCommandPrefix = BotProperties.USER_COMMAND_PREFIX
 
     //Default Prefix
-    protected var defaultCommandPrefix = Consts.DEFAULT_COMMAND_PREFIX
+    protected var defaultCommandPrefix = BotProperties.DEFAULT_COMMAND_PREFIX
 
     //runCommand: Runs the command
     abstract fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer)

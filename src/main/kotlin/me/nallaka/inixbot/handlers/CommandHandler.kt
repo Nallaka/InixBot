@@ -1,7 +1,7 @@
 package me.nallaka.inixbot.handlers
 
 import me.nallaka.inixbot.InixBot.Companion.jda
-import me.nallaka.inixbot.utils.Consts
+import me.nallaka.inixbot.utils.BotProperties
 import me.nallaka.inixbot.utils.commandmeta.Command
 import me.nallaka.inixbot.utils.commandmeta.CommandRegistry
 import me.nallaka.inixbot.utils.permissionmeta.Permissions
@@ -27,21 +27,13 @@ class CommandHandler : ListenerAdapter() {
         val rawMessage = event.message
         val content = rawMessage.content
         val author = event.author
-        val beheadedCommand = event.message.content.replaceFirst(Consts.USER_COMMAND_PREFIX, "").replaceFirst(Consts.DEFAULT_COMMAND_PREFIX, "").toLowerCase()
+        val beheadedCommand = event.message.content.replaceFirst(BotProperties.USER_COMMAND_PREFIX, "").replaceFirst(BotProperties.DEFAULT_COMMAND_PREFIX, "").toLowerCase()
         val splitBeheadedCommand = beheadedCommand.split("\\s".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
         val invoke = splitBeheadedCommand[0]
         val command = commandRegistry.getCommand(invoke)
         val args: Array<String> = splitBeheadedCommand.copyOfRange(1, splitBeheadedCommand.size)
         return CommandContainer(event, rawMessage, content, author, beheadedCommand, splitBeheadedCommand, invoke, command, args)
     }
-
-    //Checks if command with key invoke exists in CommandRegistry
-    fun isCommand(event: MessageReceivedEvent, invoke: String) : Boolean =
-            event.author.jda.selfUser != event.author && commandRegistry.getCommandRegistry().containsKey(invoke) && invoke != "help"
-
-    //Checks if command with key invoke is a "help" Command
-    fun isHelpCommand(event: MessageReceivedEvent, invoke: String) : Boolean =
-            event.author.jda.selfUser != event.author && invoke == "help"
 
     //Checks command type and executes
     fun executeCommand(commandContainer: CommandContainer) {
@@ -78,4 +70,12 @@ class CommandHandler : ListenerAdapter() {
             e.printStackTrace()
         }
     }
+
+    //Checks if command with key invoke exists in CommandRegistry
+    fun isCommand(event: MessageReceivedEvent, invoke: String) : Boolean =
+            event.author.jda.selfUser != event.author && commandRegistry.getCommandRegistry().containsKey(invoke) && invoke != "help"
+
+    //Checks if command with key invoke is a "help" Command
+    fun isHelpCommand(event: MessageReceivedEvent, invoke: String) : Boolean =
+            event.author.jda.selfUser != event.author && invoke == "help"
 }
