@@ -43,3 +43,13 @@ jar {
     }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
+
+task testJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'me.nallaka.inixbot.InixBotKt'
+    }
+    //classifier = 'tests'
+    baseName = project.name + '-test'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    from sourceSets.test.output+sourceSets.test.allSource
+}
