@@ -32,8 +32,5 @@ class BotProperties {
         var USER_COMMAND_PREFIX: String = BOT_CONFIG!!["userPrefix"] as String
         val DELETE_BOT_MESSAGES = BOT_CONFIG!!["deleteBotMessages"] == "true"
         val TIME_TO_DELETE_BOT_MESSAGES = BOT_CONFIG!!["timeToDeleteBotMessages"]!!.toLong()
-
-        //botConfig YamlWriter
-        val botConfigYamlWriter = YamlWriter(FileWriter(BOT_CONFIG_FILE_PATH))
     }
 }

@@ -37,6 +37,4 @@ fun main(args : Array<String>) {
     permissions.loadGuildUsersPermissions()
     permissions.setGuildUsersDefaultPermissions(jda)
     permissions.printPermissions()
-
-    BotProperties.botConfigYamlWriter.write(BotProperties.BOT_CONFIG)
 }
