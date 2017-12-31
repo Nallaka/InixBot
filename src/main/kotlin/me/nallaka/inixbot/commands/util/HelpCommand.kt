@@ -23,6 +23,6 @@ class HelpCommand : Command() {
                 .addField("Music Commands :musical_note:", "Coming Soon", true)
                 .addField("Utility Commands :tools:", "``search``, ``ping``,", true)
 
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+        sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
 }

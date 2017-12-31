@@ -17,6 +17,6 @@ import net.dv8tion.jda.core.entities.MessageEmbed
 class PingCommand  : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         embeddedMessageBuilder.addField(MessageEmbed.Field("Pong! :ping_pong:", java.lang.Long.toString(commandContainer.author.jda.ping) + "ms", true))
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+        sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
 }

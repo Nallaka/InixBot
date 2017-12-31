@@ -25,6 +25,6 @@ class BotInfoCommand : Command() {
                 .addField("Users", "${jda.users.size}", true)
                 .addField("Invite Link", "Coming Soon", true)
                 .addField("GitHub Repo", "Coming Soon", true)
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+        sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
 }

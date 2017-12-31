@@ -1,7 +1,6 @@
 package me.nallaka.inixbot.utils.commandmeta
 
 import me.nallaka.inixbot.handlers.CommandHandler
-import me.nallaka.inixbot.handlers.CommandMessageHandler
 import me.nallaka.inixbot.utils.BotProperties
 import net.dv8tion.jda.core.EmbedBuilder
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent
@@ -14,15 +13,6 @@ abstract class Command {
     //Message Builder
     var embeddedMessageBuilder: EmbedBuilder = EmbedBuilder().setColor(Color.CYAN).clearFields().setTitle(null).setDescription(null)
 
-    //Command Message Handler
-    var commandMessageHandler = CommandMessageHandler()
-
-    //User Defined Prefix
-    protected var userCommandPrefix = BotProperties.USER_COMMAND_PREFIX
-
-    //Default Prefix
-    protected var defaultCommandPrefix = BotProperties.DEFAULT_COMMAND_PREFIX
-
     //runCommand: Runs the command
     abstract fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer)
 
@@ -34,7 +24,7 @@ abstract class Command {
 
     //runHelpCommand: Send help message using annotation properties
     fun runHelpCommand(commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, getCmdProperties())
+        sendHelpMessage(commandContainer.event, embeddedMessageBuilder, getCmdProperties())
     }
 
     //getCmdProperties: Returns the annotation properties

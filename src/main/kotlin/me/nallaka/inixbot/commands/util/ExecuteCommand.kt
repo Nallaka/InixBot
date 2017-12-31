@@ -33,7 +33,7 @@ class ExecuteCommand : Command() {
         } else {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Please Input an Expression", true)
         }
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+        sendMessage(commandContainer.event, embeddedMessageBuilder)
 
     }
 }

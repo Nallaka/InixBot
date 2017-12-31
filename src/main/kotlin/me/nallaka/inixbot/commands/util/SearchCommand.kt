@@ -57,6 +57,6 @@ class SearchCommand : Command() {
         } else {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Input a Search", false)
         }
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+        sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
 }

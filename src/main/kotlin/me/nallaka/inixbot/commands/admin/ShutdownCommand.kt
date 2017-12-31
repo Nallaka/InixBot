@@ -19,7 +19,7 @@ class ShutdownCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         if (commandContainer.author.id == "131068934907494400") {
             embeddedMessageBuilder.addField("Shutting Down :radio_button:", "Bye", true)
-            commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+            sendMessage(commandContainer.event, embeddedMessageBuilder)
             BotProperties.botConfigYamlWriter.close()
             BotProperties.botConfigYamlReader.close()
             InixBot.jda.shutdown()

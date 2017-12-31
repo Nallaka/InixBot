@@ -28,7 +28,7 @@ class UserInfoCommand : Command() {
             } catch (e: Exception) {
                 e.printStackTrace()
                 embeddedMessageBuilder.addField("ERROR :no_entry", "User with ID ${args[0]} doesn't exist", true)
-                commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+                sendMessage(commandContainer.event, embeddedMessageBuilder)
                 return
             }
         }
@@ -50,6 +50,6 @@ class UserInfoCommand : Command() {
                 .addField("Playing", "${member.game}", true)
                 .addField("Mutual Guilds", "${user.mutualGuilds.size}", true)
                 .addField("Roles [${member.roles.size}]", userRoles, true)
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+        sendMessage(commandContainer.event, embeddedMessageBuilder)
     }
 }

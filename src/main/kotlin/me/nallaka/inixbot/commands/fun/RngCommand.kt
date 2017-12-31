@@ -22,11 +22,10 @@ class RngCommand : Command() {
             } else {
                 embeddedMessageBuilder.addField("ERROR :game_die:", "Value too high. Please try again", true)
             }
-            commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
+            sendMessage(commandContainer.event, embeddedMessageBuilder)
         } catch (e: ArrayIndexOutOfBoundsException) {
             embeddedMessageBuilder.addField("ERROR :game_die:", "Usage: ${getCmdProperties()?.usage}", true)
             sendMessage(commandContainer.event, embeddedMessageBuilder)
         }
-
     }
 }
