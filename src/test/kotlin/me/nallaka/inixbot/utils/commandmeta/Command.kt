@@ -8,7 +8,7 @@ import java.awt.Color
 
 abstract class Command {
     //Command Logger
-    var commandLogger = CommandLogger()
+    private var commandLogger = CommandLogger()
 
     //Message Builder
     var embeddedMessageBuilder: EmbedBuilder = EmbedBuilder().setColor(Color.CYAN).clearFields().setTitle(null).setDescription(null)
@@ -24,7 +24,7 @@ abstract class Command {
 
     //runHelpCommand: Send help message using annotation properties
     fun runHelpCommand(commandContainer: CommandHandler.CommandContainer) {
-        sendHelpMessage(commandContainer.event, embeddedMessageBuilder, getCmdProperties())
+        sendHelpMessage(commandContainer.event)
     }
 
     //getCmdProperties: Returns the annotation properties
@@ -36,23 +36,31 @@ abstract class Command {
     }
 
     //Sends Embedded Message
-    fun sendMessage(event: MessageReceivedEvent, embedBuilder: EmbedBuilder) {
-        event.textChannel.sendMessage(embedBuilder.build()).queue()
-        clearEmbeddedBuilder(embedBuilder)
+    fun sendMessage(event: MessageReceivedEvent) {
+        event.textChannel.sendMessage(embeddedMessageBuilder.build()).queue()
+        clearEmbeddedBuilder(embeddedMessageBuilder)
     }
 
     //Sends Formatted Embedded Help Message
-    fun sendHelpMessage(event: MessageReceivedEvent, embedBuilder: EmbedBuilder, cmdProperties: ICommand?) {
-
-        embedBuilder.setTitle("${cmdProperties?.name} ${cmdProperties?.emoji}")
+    fun sendHelpMessage(event: MessageReceivedEvent) {
+        val cmdProperties = this.getCmdProperties()
+        embeddedMessageBuilder.setTitle("${cmdProperties?.name} ${cmdProperties?.emoji}")
                 .setDescription(cmdProperties?.description)
                 .addField("Usage", "``${BotProperties.DEFAULT_COMMAND_PREFIX}${cmdProperties?.usage}``", true)
                 .addField("Aliases", cmdProperties?.aliases?.contentToString(), true)
                 .addField("Required Permission", "${cmdProperties?.commandPermissionLevel}", true )
-        sendMessage(event, embedBuilder)
-        clearEmbeddedBuilder(embedBuilder)
+        sendMessage(event)
+        clearEmbeddedBuilder(embeddedMessageBuilder)
+    }
+
+    fun sendUsageMessage(event: MessageReceivedEvent) {
+        val cmdProperties = this.getCmdProperties()
+        embeddedMessageBuilder.setTitle("${cmdProperties?.name} ${cmdProperties?.emoji}")
+                .setDescription(cmdProperties?.description)
+                .addField("Usage", "``${BotProperties.DEFAULT_COMMAND_PREFIX}${cmdProperties?.usage}``", true)
+        sendMessage(event)
     }
 
     //Clears the current EmbedMessage
-    fun clearEmbeddedBuilder(embedBuilder: EmbedBuilder) = embedBuilder.setTitle(null).setDescription(null).clearFields()
+    fun clearEmbeddedBuilder(embeddedMessageBuilder: EmbedBuilder) = embeddedMessageBuilder.setTitle(null).setDescription(null).clearFields()
 }

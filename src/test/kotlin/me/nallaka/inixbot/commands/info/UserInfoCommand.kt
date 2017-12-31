@@ -43,11 +43,11 @@ class UserInfoCommand : Command() {
         }
         embeddedMessageBuilder
                 .setTitle("${user.name}#${user.discriminator}")
-                .setDescription("Playing ${member.game}")
                 .setThumbnail(user.avatarUrl)
-                .addField("Nickname", member.effectiveName, true)
                 .addField("User ID", user.id, true)
-                .addField("Status", member.onlineStatus.toString().toLowerCase(), true)
+                .addField("Nickname", member.effectiveName, true)
+                .addField("Status", "${member.onlineStatus}", true)
+                .addField("Playing", "${member.game}", true)
                 .addField("Mutual Guilds", "${user.mutualGuilds.size}", true)
                 .addField("Roles [${member.roles.size}]", userRoles, true)
         sendMessage(commandContainer.event)

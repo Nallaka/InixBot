@@ -28,8 +28,9 @@ class ChangePrefixCommand : Command() {
             yamlWriter.close()
             embeddedMessageBuilder.addField("${cmdProperties?.name}", "Changed to ``" + args[0] + "``", true)
         } else if (!args.isNotEmpty()) {
-            embeddedMessageBuilder.addField("ERROR :no_entry:", "Input a New Header", true)
+            sendUsageMessage(commandContainer.event)
+            return
         }
-        sendMessage(commandContainer.event, embeddedMessageBuilder)
+        sendMessage(commandContainer.event)
     }
 }

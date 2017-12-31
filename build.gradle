@@ -50,6 +50,6 @@ task testJar(type: Jar) {
     }
     //classifier = 'tests'
     baseName = project.name + '-test'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     from sourceSets.test.output+sourceSets.test.allSource
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }

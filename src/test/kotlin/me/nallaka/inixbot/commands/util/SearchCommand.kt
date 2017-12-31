@@ -2,6 +2,7 @@ package me.nallaka.inixbot.commands.util
 
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
@@ -9,8 +10,16 @@ import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLDecoder
 import java.net.URLEncoder
-
-class SearchCommand : Command(PermissionLevel.DEFAULT) {
+@ICommand(
+        name = "Search",
+        emoji = ":mag:",
+        description = "Searches the Interwebs",
+        usage = "search <query>",
+        aliases = ["search", "google"],
+        commandPermissionLevel = PermissionLevel.DEFAULT,
+        isOwnerOnly = false
+)
+class SearchCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         if (args.isNotEmpty()) {
             embeddedMessageBuilder.setTitle("Search Results :mag_right:")
@@ -48,15 +57,6 @@ class SearchCommand : Command(PermissionLevel.DEFAULT) {
         } else {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Input a Search", false)
         }
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
-    }
-
-    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "Google Search :mag_right:", "Search Google", "google <search>")
-    }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return false
+        sendMessage(commandContainer.event)
     }
 }

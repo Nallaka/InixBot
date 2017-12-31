@@ -2,24 +2,27 @@ package me.nallaka.inixbot.commands.util
 
 import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
-
-class HelpCommand : Command(PermissionLevel.DEFAULT) {
+@ICommand(
+        name = "Help",
+        emoji = ":gear:",
+        description = "Helps You?",
+        usage = "help <command>",
+        aliases = ["help"],
+        commandPermissionLevel = PermissionLevel.DEFAULT,
+        isOwnerOnly = false
+)
+class HelpCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         embeddedMessageBuilder.setTitle("Help :gear:")
                 .setDescription("Do ``_help <command>`` for more information")
-        embeddedMessageBuilder.addField("Fun Commands :boom:", "``8ball``, ``hello``,", true)
-        embeddedMessageBuilder.addField("Music Commands :musical_note:", "``music``, ", true)
-        embeddedMessageBuilder.addField("Utility Commands :tools:", "``changeprefix``, ``coinflip``, ``ping``, ``rolldice``", true)
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
-    }
+                .addField("Admin Commands :red_circle:", "``changeprefix``, ``shutdown``,", true)
+                .addField("Fun Commands :boom:", "``coinflip``, ``8ball``, ``hello``, ``rng``,", true)
+                .addField("Info Commands :newspaper:", "``botinfo``, ``userinfo``, ``guildinfo``, ``devinfo``", true)
+                .addField("Music Commands :musical_note:", "Coming Soon", true)
+                .addField("Utility Commands :tools:", "``search``, ``ping``,", true)
 
-    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "Help", "Helps you with Help?", "help help")
-    }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return true
+        sendMessage(commandContainer.event)
     }
 }

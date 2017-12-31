@@ -1,9 +1,7 @@
 package me.nallaka.inixbot.utils
 
 import com.esotericsoftware.yamlbeans.YamlReader
-import com.esotericsoftware.yamlbeans.YamlWriter
 import java.io.FileReader
-import java.io.FileWriter
 
 class BotProperties {
     companion object {
@@ -30,7 +28,5 @@ class BotProperties {
         val BOT_AVATAR = BOT_CONFIG!!["botAvatar"]
         val BOT_TOKEN = BOT_CONFIG!!["botToken"]
         var USER_COMMAND_PREFIX: String = BOT_CONFIG!!["userPrefix"] as String
-        val DELETE_BOT_MESSAGES = BOT_CONFIG!!["deleteBotMessages"] == "true"
-        val TIME_TO_DELETE_BOT_MESSAGES = BOT_CONFIG!!["timeToDeleteBotMessages"]!!.toLong()
     }
 }

@@ -1,28 +1,35 @@
 package me.nallaka.inixbot.commands.admin
 
-import me.nallaka.inixbot.InixBot
+import com.esotericsoftware.yamlbeans.YamlWriter
 import me.nallaka.inixbot.handlers.CommandHandler
+import me.nallaka.inixbot.utils.BotProperties
 import me.nallaka.inixbot.utils.commandmeta.Command
+import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
+import java.io.FileWriter
 
-class ChangePrefixCommand : Command(PermissionLevel.ADMIN) {
+@ICommand(
+        name = "Change Prefix",
+        emoji = ":gear:",
+        description = "Changes the command prefix",
+        usage = "changeprefix <prefix>",
+        aliases = ["changeprefix", "changeheader"],
+        commandPermissionLevel = PermissionLevel.ADMIN,
+        isOwnerOnly = false
+)
+class ChangePrefixCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
+        val cmdProperties = getCmdProperties()
         if (args.isNotEmpty()) {
-            InixBot.USER_COMMAND_PREFIX = args[0]
-            println(InixBot.USER_COMMAND_PREFIX)
-            embeddedMessageBuilder.addField("Command Header -", "Changed to ``" + args[0] + "``", true)
+            BotProperties.USER_COMMAND_PREFIX = args[0]
+            val yamlWriter = YamlWriter(FileWriter(BotProperties.BOT_CONFIG_FILE_PATH))
+            BotProperties.BOT_CONFIG?.put("userPrefix", args[0])
+            yamlWriter.write(BotProperties.BOT_CONFIG)
+            yamlWriter.close()
+            embeddedMessageBuilder.addField("${cmdProperties?.name}", "Changed to ``" + args[0] + "``", true)
         } else if (!args.isNotEmpty()) {
             embeddedMessageBuilder.addField("ERROR :no_entry:", "Input a New Header", true)
         }
-        commandMessageHandler.sendMessage(commandContainer.event, embeddedMessageBuilder)
-    }
-
-    override fun runHelpCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        commandMessageHandler.sendHelpMessage(commandContainer.event, embeddedMessageBuilder, "Change Command Header :gear:", "Changes the Command Prefix", "changeheader <header>")
-    }
-
-    override fun executed(commandContainer: CommandHandler.CommandContainer): Boolean {
-        commandLogger.logCommand(commandContainer)
-        return false
+        sendMessage(commandContainer.event)
     }
 }
