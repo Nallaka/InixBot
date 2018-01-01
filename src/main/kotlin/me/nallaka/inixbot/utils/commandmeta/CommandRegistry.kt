@@ -7,6 +7,7 @@ import me.nallaka.inixbot.commands.`fun`.RngCommand
 import me.nallaka.inixbot.commands.admin.ChangePrefixCommand
 import me.nallaka.inixbot.commands.admin.ShutdownCommand
 import me.nallaka.inixbot.commands.info.BotInfoCommand
+import me.nallaka.inixbot.commands.info.GuildInfoCommand
 import me.nallaka.inixbot.commands.info.UserInfoCommand
 import me.nallaka.inixbot.commands.util.ExecuteCommand
 import me.nallaka.inixbot.commands.util.HelpCommand
@@ -40,8 +41,11 @@ class CommandRegistry {
         registerCommand(PingCommand())
         registerCommand(SearchCommand())
         registerCommand(ExecuteCommand())
+
+        //Info Commands
         registerCommand(BotInfoCommand())
         registerCommand(UserInfoCommand())
+        registerCommand(GuildInfoCommand())
     }
 
     //registerCommand: Registers a new command with all given aliases
