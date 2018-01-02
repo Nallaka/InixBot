@@ -20,6 +20,7 @@ class UserInfoCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         var userRoles = ""
         var user: User = commandContainer.author
+
         if (commandContainer.rawMessage.mentionedUsers.isNotEmpty()) {
             user = commandContainer.rawMessage.mentionedUsers[0]
         } else if (args.isNotEmpty()){
@@ -28,6 +29,7 @@ class UserInfoCommand : Command() {
             } catch (e: Exception) {
                 e.printStackTrace()
                 embeddedMessageBuilder.addField("ERROR :no_entry", "User with ID ${args[0]} doesn't exist", true)
+
                 sendMessage(commandContainer.event)
                 return
             }
@@ -41,6 +43,7 @@ class UserInfoCommand : Command() {
                 role.name
             }
         }
+
         embeddedMessageBuilder
                 .setTitle("${user.name}#${user.discriminator}")
                 .setDescription("Playing ${member.game}")
@@ -50,6 +53,7 @@ class UserInfoCommand : Command() {
                 .addField("Status", member.onlineStatus.toString().toLowerCase(), true)
                 .addField("Mutual Guilds", "${user.mutualGuilds.size}", true)
                 .addField("Roles [${member.roles.size}]", userRoles, true)
+
         sendMessage(commandContainer.event)
     }
 }

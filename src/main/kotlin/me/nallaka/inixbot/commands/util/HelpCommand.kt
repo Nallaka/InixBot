@@ -19,7 +19,7 @@ class HelpCommand : Command() {
                 .setDescription("Do ``_help <command>`` for more information")
                 .addField("Admin Commands :red_circle:", "``changeprefix``, ``shutdown``,", true)
                 .addField("Fun Commands :boom:", "``coinflip``, ``8ball``, ``hello``, ``rng``,", true)
-                .addField("Info Commands :newspaper:", "``botinfo``, ``userinfo``, ``guildinfo``, ``devinfo``", true)
+                .addField("Info Commands :newspaper:", "``bot``, ``user``, ``guild``, ``devinfo``", true)
                 .addField("Music Commands :musical_note:", "Coming Soon", true)
                 .addField("Utility Commands :tools:", "``search``, ``ping``,", true)
 
