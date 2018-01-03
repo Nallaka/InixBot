@@ -26,9 +26,9 @@ class UserInfoCommand : Command() {
         } else if (args.isNotEmpty()){
             try {
                 user = commandContainer.event.jda.retrieveUserById(args[0]).complete()
-            } catch (e: Exception) {
+            } catch (e: Exception) { //TODO: Find correct exception
                 e.printStackTrace()
-                embeddedMessageBuilder.addField("ERROR :no_entry", "User with ID ${args[0]} doesn't exist", true)
+                embeddedMessageBuilder.addField("ERROR :no_entry:", "User with ID ${args[0]} doesn't exist", true)
 
                 sendMessage(commandContainer.event)
                 return
