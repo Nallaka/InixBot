@@ -3,7 +3,7 @@ package me.nallaka.inixbot.utils.commandmeta
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 
 @Retention(AnnotationRetention.RUNTIME)
-@Target(AnnotationTarget.TYPE, AnnotationTarget.CLASS)
+@Target(AnnotationTarget.CLASS)
 annotation class ICommand(
         val name: String = "",
         val emoji: String = "",
