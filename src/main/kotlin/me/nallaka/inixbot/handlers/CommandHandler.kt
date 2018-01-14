@@ -42,11 +42,12 @@ class CommandHandler : ListenerAdapter() {
         val args = commandContainer.args
         val invoke = commandContainer.invoke
         val command = commandContainer.command
-        try {
+        val messageBuilder = EmbedBuilder().setColor(Color.CYAN)
+        if (command != null) {
             jda.asBot().jda.getTextChannelById(commandContainer.event.textChannel.id).sendTyping().queue()
-            if (command?.getCmdProperties()!!.isOwnerOnly && user.id != "131068934907494400") {
-                val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "You Don't Have Permission!", true).build()
-                event.textChannel.sendMessage(messageBuilder).queue()
+            if (command.getCmdProperties()!!.isOwnerOnly && user.id != "131068934907494400") {
+                messageBuilder.addField("ERROR :no_entry:", "You Don't Have Permission!", true)
+                event.textChannel.sendMessage(messageBuilder.build()).queue()
             } else {
                 if (isCommand(event, invoke) && commandContainer.splitBeheadedCommand.isNotEmpty() && permissions.userHasCommandPermission(user, command)) {
                     command.runCommand(args, commandContainer)
@@ -60,14 +61,13 @@ class CommandHandler : ListenerAdapter() {
                         command.executed(commandContainer)
                     }
                 } else if (isCommand(event, invoke) && !permissions.userHasCommandPermission(user, command)) {
-                    val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "You Don't Have Permission!", true).build()
-                    event.textChannel.sendMessage(messageBuilder).queue()
+                    messageBuilder.addField("ERROR :no_entry:", "You Don't Have Permission!", true)
+                    event.textChannel.sendMessage(messageBuilder.build()).queue()
                 }
             }
-        } catch (e: KotlinNullPointerException) {
-            val messageBuilder = EmbedBuilder().setColor(Color.CYAN).addField("ERROR :no_entry:", "That's not a valid command!", true).build()
-            event.textChannel.sendMessage(messageBuilder).queue()
-            e.printStackTrace()
+        } else {
+            messageBuilder.addField("ERROR :no_entry:", "That's not a valid command!", true)
+            event.textChannel.sendMessage(messageBuilder.build()).queue()
         }
     }
 

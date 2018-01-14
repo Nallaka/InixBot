@@ -11,7 +11,6 @@ import net.dv8tion.jda.core.JDABuilder
 
 
 class InixBot {
-
     companion object {
         //Create JDA Bot
         val jda: JDA = JDABuilder(AccountType.BOT).setToken(BotProperties.BOT_TOKEN).buildBlocking()

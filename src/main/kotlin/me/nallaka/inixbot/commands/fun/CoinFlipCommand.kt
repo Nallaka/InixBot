@@ -14,7 +14,6 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         isOwnerOnly = false
 )
 class CoinFlipCommand : Command() {
-
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         val random = (Math.random() * 1000).toInt()
         val flip: String

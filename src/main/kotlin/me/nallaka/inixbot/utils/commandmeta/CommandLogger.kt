@@ -14,6 +14,7 @@ class CommandLogger {
         for (commandArg in commandContainer.args) {
             stringToLog += commandArg + " "
         }
+
         println(stringToLog)
     }
 }
