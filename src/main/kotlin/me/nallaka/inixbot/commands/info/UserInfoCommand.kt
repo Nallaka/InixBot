@@ -23,7 +23,7 @@ class UserInfoCommand : Command() {
 
         if (commandContainer.rawMessage.mentionedUsers.isNotEmpty()) {
             user = commandContainer.rawMessage.mentionedUsers[0]
-        } else if (args.isNotEmpty()){
+        } else if (args.isNotEmpty()) {
             try {
                 user = commandContainer.event.jda.retrieveUserById(args[0]).complete()
             } catch (e: Exception) { //TODO: Find correct exception
@@ -37,7 +37,7 @@ class UserInfoCommand : Command() {
         val member = commandContainer.event.guild.getMember(user)
 
         for (role: Role in member.roles) {
-            userRoles += if (role != member.roles[member.roles.size-1]) {
+            userRoles += if (role != member.roles[member.roles.size - 1]) {
                 "${role.name}, "
             } else {
                 role.name

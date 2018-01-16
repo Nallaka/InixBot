@@ -48,7 +48,7 @@ abstract class Command {
                 .setDescription(cmdProperties?.description)
                 .addField("Usage", "``${BotProperties.DEFAULT_COMMAND_PREFIX}${cmdProperties?.usage}``", true)
                 .addField("Aliases", cmdProperties?.aliases?.contentToString(), true)
-                .addField("Required Permission", "${cmdProperties?.commandPermissionLevel}", true )
+                .addField("Required Permission", "${cmdProperties?.commandPermissionLevel}", true)
         sendMessage(event)
         clearEmbeddedBuilder(embeddedMessageBuilder)
     }

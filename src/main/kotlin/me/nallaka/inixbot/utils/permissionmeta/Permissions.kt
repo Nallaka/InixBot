@@ -38,7 +38,7 @@ class Permissions {
     fun loadGuildUsersPermissions() {
         val yamlPermissionRegistry: HashMap<String, String> = permissionYamlReader.read() as HashMap<String, String>
         var tempPermissionLevel: PermissionLevel
-        for (entry: Map.Entry<String,String> in yamlPermissionRegistry) {
+        for (entry: Map.Entry<String, String> in yamlPermissionRegistry) {
             if (!userPermissionRegistry.containsKey(entry.key)) {
                 tempPermissionLevel = when (entry.value) {
                     "DEFAULT" -> PermissionLevel.DEFAULT
@@ -73,11 +73,11 @@ class Permissions {
     }
 
     //userHasPermissionLevel: Returns is user has designated permissionLevel or higher
-    fun userHasPermissionLevel(user: User, permissionLevel: PermissionLevel) : Boolean =
+    fun userHasPermissionLevel(user: User, permissionLevel: PermissionLevel): Boolean =
             userPermissionRegistry.containsKey(user.id) && userPermissionRegistry[user.id]?.getPermissionLevelOrdinal()!! >= permissionLevel.getPermissionLevelOrdinal()
 
     //userHasCommandPermission: Returns if user has permission for a command
-    fun userHasCommandPermission(user: User, command: Command?) : Boolean =
+    fun userHasCommandPermission(user: User, command: Command?): Boolean =
             userPermissionRegistry.get(user.id)?.ordinal!! >= command?.getCmdProperties()!!.commandPermissionLevel.getPermissionLevelOrdinal()
 
 

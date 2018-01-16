@@ -12,4 +12,4 @@ annotation class ICommand(
         val aliases: Array<String> = [],
         val commandPermissionLevel: PermissionLevel = PermissionLevel.DEFAULT,
         val isOwnerOnly: Boolean = false
-        )
+)

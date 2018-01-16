@@ -8,7 +8,7 @@ import net.dv8tion.jda.core.OnlineStatus
 import net.dv8tion.jda.core.entities.Role
 import java.time.format.DateTimeFormatter
 
-@ICommand (
+@ICommand(
         name = "Guild Info",
         emoji = ":newspaper:",
         description = "Displays Guild information",

@@ -4,6 +4,7 @@ import me.nallaka.inixbot.handlers.CommandHandler
 import me.nallaka.inixbot.utils.commandmeta.Command
 import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
+
 @ICommand(
         name = "Eight Ball",
         emoji = ":8ball:",

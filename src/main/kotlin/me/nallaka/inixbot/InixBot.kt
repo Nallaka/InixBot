@@ -17,7 +17,7 @@ class InixBot {
     }
 }
 
-fun main(args : Array<String>) {
+fun main(args: Array<String>) {
     //Creating main JDA object
     val jda: JDA = JDABuilder(AccountType.BOT).setToken(BotProperties.BOT_TOKEN).buildBlocking()
 

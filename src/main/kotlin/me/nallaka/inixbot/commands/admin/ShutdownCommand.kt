@@ -6,6 +6,7 @@ import me.nallaka.inixbot.utils.BotProperties
 import me.nallaka.inixbot.utils.commandmeta.Command
 import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
+
 @ICommand(
         name = "Shutdown",
         emoji = ":radio_button:",

@@ -62,7 +62,7 @@ class CommandRegistry {
     }
 
     //getCommandRegistry: Returns complete commandRegistry
-    fun getCommandRegistry() : MutableMap<String, Command> = commandRegistry
+    fun getCommandRegistry(): MutableMap<String, Command> = commandRegistry
 
-    fun getCommand(commandString: String ) : Command? = commandRegistry[commandString]
+    fun getCommand(commandString: String): Command? = commandRegistry[commandString]
 }

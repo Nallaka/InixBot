@@ -23,7 +23,7 @@ class CommandHandler : ListenerAdapter() {
     data class CommandContainer(val event: MessageReceivedEvent, val rawMessage: Message, val content: String, val author: User, val beheadedCommand: String, val splitBeheadedCommand: Array<String>, val invoke: String, val command: Command?, val args: Array<String>)
 
     //Parses a given command
-    fun parseCommand(event: MessageReceivedEvent) : CommandContainer {
+    fun parseCommand(event: MessageReceivedEvent): CommandContainer {
         val rawMessage = event.message
         val content = rawMessage.content
         val author = event.author
@@ -72,10 +72,10 @@ class CommandHandler : ListenerAdapter() {
     }
 
     //Checks if command with key invoke exists in CommandRegistry
-    fun isCommand(event: MessageReceivedEvent, invoke: String) : Boolean =
+    fun isCommand(event: MessageReceivedEvent, invoke: String): Boolean =
             event.author.jda.selfUser != event.author && commandRegistry.getCommandRegistry().containsKey(invoke) && invoke != "help"
 
     //Checks if command with key invoke is a "help" Command
-    fun isHelpCommand(event: MessageReceivedEvent, invoke: String) : Boolean =
+    fun isHelpCommand(event: MessageReceivedEvent, invoke: String): Boolean =
             event.author.jda.selfUser != event.author && invoke == "help"
 }
