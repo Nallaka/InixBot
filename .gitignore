@@ -62,3 +62,7 @@ fabric.properties
 /src/test/kotlin/resources/permissions.yml
 /src/test/kotlin/META-INF/MANIFEST.MF
 /.idea/
+/Inix-Bot.iml
+.gradle/
+Inix-Bot.iml
+build/
