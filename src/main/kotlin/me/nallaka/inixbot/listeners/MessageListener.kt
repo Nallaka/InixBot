@@ -12,7 +12,8 @@ class MessageListener : ListenerAdapter() {
     //onMessageReceived: Runs on MessageRecieved Event. Checks type of command and executes
     override fun onMessageReceived(event: MessageReceivedEvent) {
         val content = event.message.content.toLowerCase()
-        if (content.startsWith(BotProperties.DEFAULT_COMMAND_PREFIX) || content.toLowerCase().startsWith(BotProperties.USER_COMMAND_PREFIX) && event.author != jda.selfUser) {
+        val rawContent = event.message.rawContent
+        if (content.startsWith(BotProperties.DEFAULT_COMMAND_PREFIX) || content.startsWith(BotProperties.USER_COMMAND_PREFIX) && event.author != jda.selfUser) {
             commandHandler.executeCommand(commandHandler.parseCommand(event))
         }
     }

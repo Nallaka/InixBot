@@ -6,6 +6,7 @@ import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 import net.dv8tion.jda.core.entities.Role
 import net.dv8tion.jda.core.entities.User
+import net.dv8tion.jda.core.exceptions.ErrorResponseException
 
 @ICommand(
         name = "User Info",
@@ -26,7 +27,7 @@ class UserInfoCommand : Command() {
         } else if (args.isNotEmpty()) {
             try {
                 user = commandContainer.event.jda.retrieveUserById(args[0]).complete()
-            } catch (e: Exception) { //TODO: Find correct exception
+            } catch (e: ErrorResponseException) {
                 e.printStackTrace()
                 embeddedMessageBuilder.addField("ERROR :no_entry:", "User with ID ${args[0]} doesn't exist", true)
 

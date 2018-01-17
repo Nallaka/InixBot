@@ -43,6 +43,7 @@ class CommandHandler : ListenerAdapter() {
         val invoke = commandContainer.invoke
         val command = commandContainer.command
         val messageBuilder = EmbedBuilder().setColor(Color.CYAN)
+
         if (command != null) {
             jda.asBot().jda.getTextChannelById(commandContainer.event.textChannel.id).sendTyping().queue()
             if (command.getCmdProperties()!!.isOwnerOnly && user.id != "131068934907494400") {
@@ -65,9 +66,6 @@ class CommandHandler : ListenerAdapter() {
                     event.textChannel.sendMessage(messageBuilder.build()).queue()
                 }
             }
-        } else {
-            messageBuilder.addField("ERROR :no_entry:", "That's not a valid command!", true)
-            event.textChannel.sendMessage(messageBuilder.build()).queue()
         }
     }
 
