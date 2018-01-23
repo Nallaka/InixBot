@@ -1,5 +1,5 @@
 # Inix-Bot  [![License](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](LICENSE) [![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg?style=flat-square)]()
-**Inix** is a multipurpose bot written in Kotlin, using JDA and LavaPlayer
+**Inix** is a multipurpose Discord bot written in Kotlin, using JDA and LavaPlayer
 ## Hosting Inix
 ### Instructions
 * Coming Soon
