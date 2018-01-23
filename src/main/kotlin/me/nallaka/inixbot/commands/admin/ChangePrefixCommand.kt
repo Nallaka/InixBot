@@ -27,7 +27,7 @@ class ChangePrefixCommand : Command() {
             yamlWriter.write(BotProperties.BOT_CONFIG)
             yamlWriter.close()
             embeddedMessageBuilder.addField("${cmdProperties?.name}", "Changed to ``" + args[0] + "``", true)
-        } else if (!args.isNotEmpty()) {
+        } else {
             sendUsageMessage(commandContainer.event)
             return
         }
