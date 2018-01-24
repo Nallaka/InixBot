@@ -18,15 +18,14 @@ class RngCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         if (args.isNotEmpty()) {
             val diceArg = Integer.parseInt(args[0])
-            if (diceArg < 1000) {
+            if (diceArg <= 1000) {
                 embeddedMessageBuilder.addField("RNG :game_die:", Integer.toString((Math.random() * Integer.parseInt(args[0])).toInt()), true)
             } else {
                 embeddedMessageBuilder.addField("ERROR :game_die:", "Value too high. Please try again", true)
             }
+            sendMessage(commandContainer.event)
         } else {
-            embeddedMessageBuilder.addField("ERROR :game_die:", "Usage: ${getCmdProperties()?.usage}", true)
+            sendUsageMessage(commandContainer.event)
         }
-
-        sendMessage(commandContainer.event)
     }
 }

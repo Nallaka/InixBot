@@ -41,6 +41,12 @@ abstract class Command {
         clearEmbeddedBuilder(embeddedMessageBuilder)
     }
 
+    //Sends passed Embedded Message
+    fun sendMessage(event: MessageReceivedEvent, embeddedMessageBuilder: EmbedBuilder) {
+        event.textChannel.sendMessage(embeddedMessageBuilder.build()).queue()
+        clearEmbeddedBuilder(embeddedMessageBuilder)
+    }
+
     //Sends Formatted Embedded Help Message
     fun sendHelpMessage(event: MessageReceivedEvent) {
         val cmdProperties = this.getCmdProperties()

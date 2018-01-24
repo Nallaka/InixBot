@@ -24,7 +24,7 @@ class EightBallCommand : Command() {
 
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
         val eightBallResponse = if (args.isNotEmpty()) {
-            responses[(Math.random() * 20 + 1).toInt()]
+            responses[(Math.random() * 21).toInt()]
         } else {
             "I'll need a question"
         }

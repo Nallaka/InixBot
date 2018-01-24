@@ -18,15 +18,10 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
 )
 class ShutdownCommand : Command() {
     override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
-        if (commandContainer.author.id == "131068934907494400") {
-            embeddedMessageBuilder.addField("Shutting Down :radio_button:", "Bye", true)
-            sendMessage(commandContainer.event)
-            BotProperties.botConfigYamlReader.close()
-            InixBot.jda.shutdown()
-            System.exit(0)
-        } else {
-            embeddedMessageBuilder.addField("ERROR :no_entry:", "Only <@131068934907494400> can use this command", true)
-            sendMessage(commandContainer.event)
-        }
+        embeddedMessageBuilder.addField("Shutting Down :radio_button:", "Bye", true)
+        sendMessage(commandContainer.event)
+        BotProperties.botConfigYamlReader.close()
+        InixBot.jda.shutdown()
+        System.exit(0)
     }
 }
