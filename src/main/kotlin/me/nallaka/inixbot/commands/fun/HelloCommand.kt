@@ -1,6 +1,6 @@
 package me.nallaka.inixbot.commands.`fun`
 
-import me.nallaka.inixbot.handlers.CommandHandler
+import me.nallaka.inixbot.handlers.CommandHandler.CommandContainer
 import me.nallaka.inixbot.utils.commandmeta.Command
 import me.nallaka.inixbot.utils.commandmeta.ICommand
 import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
@@ -15,7 +15,7 @@ import me.nallaka.inixbot.utils.permissionmeta.PermissionLevel
         isOwnerOnly = false
 )
 class HelloCommand : Command() {
-    override fun runCommand(args: Array<String>, commandContainer: CommandHandler.CommandContainer) {
+    override fun runCommand(args: Array<String>, commandContainer: CommandContainer) {
         embeddedMessageBuilder.setTitle("Hello :wave:").setDescription(commandContainer.author.name)
         sendMessage(commandContainer.event)
     }

@@ -1,5 +1,6 @@
 package me.nallaka.inixbot
 
+import me.nallaka.inixbot.InixBot.Companion.jda
 import me.nallaka.inixbot.listeners.EventListener
 import me.nallaka.inixbot.listeners.MessageListener
 import me.nallaka.inixbot.utils.BotProperties
@@ -18,9 +19,6 @@ class InixBot {
 }
 
 fun main(args: Array<String>) {
-    //Creating main JDA object
-    val jda: JDA = JDABuilder(AccountType.BOT).setToken(BotProperties.BOT_TOKEN).buildBlocking()
-
     //Adding MessageListener Listener
     jda.addEventListener(MessageListener())
 
