@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.2.21'
+    ext.kotlin_version = '1.2.41'
 
     repositories {
         mavenCentral()
@@ -39,14 +39,14 @@ compileTestKotlin {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'me.nallaka.inixbot.InixBotKt'
+        attributes 'Main-Class': 'raptor.RaptorBotKt'
     }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
 task testJar(type: Jar) {
     manifest {
-        attributes 'Main-Class': 'me.nallaka.inixbot.InixBotKt'
+        attributes 'Main-Class': 'raptor.RaptorBotKt'
     }
     //classifier = 'tests'
     baseName = project.name + '-test'
